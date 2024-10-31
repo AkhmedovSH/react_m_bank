@@ -57,7 +57,7 @@ const Index = () => {
 			</Route>
 
 			<Route element={<NoAuthLayout />}>
-				<Route path="*" element={<Navigate to="/auth/login" replace />} />
+				<Route path="*" element={<Navigate to="/auth/welcome" replace />} />
 			</Route>
 		</Routes>
 	)

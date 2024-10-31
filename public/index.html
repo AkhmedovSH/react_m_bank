@@ -3,19 +3,35 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta property="og:type" content="website">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <meta name="description" content="MBank">
+  <meta name="keyword" content="MBank">
+
+  <meta name="theme-color" content="#ffffff" />
 
   <title>MBank</title>
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+
+  <style>
+    #root:not(:empty)+.preload {
+      display: none;
+    }
+
+    .preload {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+  <div class="preload">
+    <img src="./logo512.png" alt="" width="150">
+  </div>
 </body>
 
 </html>

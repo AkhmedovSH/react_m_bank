@@ -1,12 +1,38 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import logo from 'assets/icons/logo.svg'
+import arrow_right from 'assets/icons/arrow_right.svg'
 
 function Welcome() {
     return (
         <>
-            <div className="welcome_bg">
-                <div className="">
+            <div className="auth-bg welcome">
+                <img src={logo} alt="" className="mobile-show logo" />
 
+
+                <div className="welcome-container">
+                    <img src={logo} alt="" className="logo" />
+
+                    <h1>
+                        Добро пожаловать в MBank!
+                    </h1>
+
+                    <div className="w-100 d-flex justify-content-center gap-10">
+                        <Link className="auth-btn small mobile-show" to="/auth/register" onClick={() => localStorage.setItem('isRegister', false)}>
+                            Вход
+                        </Link>
+
+                        <Link className="auth-btn" to="/auth/register" onClick={() => localStorage.setItem('isRegister', true)}>
+                            Регистрация
+                            <img src={arrow_right} alt="" />
+                        </Link>
+                    </div>
                 </div>
+
+                <Link className="auth-btn small welcome-login" to="/auth/login" onClick={() => localStorage.setItem('isRegister', false)}>
+                    Войти
+                </Link>
             </div>
         </>
     )
