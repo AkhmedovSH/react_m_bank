@@ -7,8 +7,6 @@ const publicRoutes = [
 ]
 
 const usersRoutes = [
-	// { path: "/shift-report", component: <ShiftReport /> },
-	// { path: "/shift-report/:id", component: <ShiftReport /> },
 ]
 
 
