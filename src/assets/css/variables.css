@@ -35,6 +35,10 @@
     --second-btn-bg: #fff;
 }
 
+#root {
+    height: 100%;
+}
+
 body {
     font-family: 'VelaSans';
     color: var(--text-color);

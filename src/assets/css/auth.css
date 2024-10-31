@@ -1,7 +1,7 @@
 .auth-bg {
     position: relative;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     background-image: url('../images/auth_bg.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -80,7 +80,8 @@
 }
 
 .auth-card {
-    height: 100%;
+    min-height: 100%;
+    height: auto;
     width: 50%;
     margin: auto;
     /* margin-top: 20px;
@@ -94,8 +95,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    overflow-y: auto;
-    overflow-x: hidden;
+    gap: 20px;
 }
 
 .auth-card.bg {

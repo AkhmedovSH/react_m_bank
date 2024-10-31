@@ -35,7 +35,7 @@ function RegisterPhone() {
                                 <img src={arrow_left} alt="" />
                             </button>
 
-                            <Link className="auth-btn dark" to="/auth/phone">
+                            <Link className="auth-btn dark" to="/auth/welcome">
                                 Перейти в кабинет!
                                 <img src={arrow_right} alt="" />
                             </Link>
