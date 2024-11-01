@@ -19,7 +19,7 @@ function createPrivateRoutes() {
 		return usersRoutes.map((item, key) => {
 			return (
 				<Route key={key} element={<ProtectedRoute />}>
-					<Route path={item.path} element={item.component} />
+					<Route path={item.path} element={item.component} />	
 				</Route>
 			);
 		});
