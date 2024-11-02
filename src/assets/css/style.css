@@ -1,25 +1,319 @@
-/* fonts.css */
-
-@font-face {
-	font-family: 'VelaSans';
-	src: url('../fonts/Vela Sans//VelaSans-Regular.woff2') format('woff2'),
-		url('../fonts/Vela Sans//VelaSans-Regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
+.dashboard {
+    height: 100%;
+    width: 100%;
+    background-color: #F8F4F8;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    background-image: url('../icons/logo.svg');
+    background-repeat: no-repeat;
+    background-position: 50% 60px;
 }
 
-@font-face {
-	font-family: 'VelaSans';
-	src: url('../fonts/Vela Sans//VelaSans-Medium.woff2') format('woff2'),
-		url('../fonts/Vela Sans//VelaSans-Medium.woff') format('woff');
-	font-weight: 500;
-	font-style: normal;
+.dashboard-card {
+    height: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    gap: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+    margin: auto;
+    overflow: auto;
 }
 
-@font-face {
-	font-family: 'VelaSans';
-	src: url('../fonts/Vela Sans//VelaSans-Bold.woff2') format('woff2'),
-		url('../fonts/Vela Sans//VelaSans-Bold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
+.dashboard-title {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.dashboard-subtitle {
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 0.06px;
+    color: rgba(25, 23, 22, 0.10);
+}
+
+.dashboard-tabs {
+    padding: 15px 10px;
+    border-radius: 70px;
+    border: 1px solid #E3DFFF;
+    background: #FFF;
+    backdrop-filter: blur(25px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-tab path {
+    cursor: pointer;
+    fill: #E3DFFF;
+    stroke: #E3DFFF;
+}
+
+.dashboard-tab.active path {
+    fill: var(--second-primary);
+    stroke: rgba(255, 255, 255, 0.5);
+}
+
+.dashboard-avatar img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.dashboard-card-02 {
+    height: 100%;
+    min-height: 140px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: stretch;
+
+    border-radius: 20px;
+    border: 1px solid, #E3DFFF;
+    background: #FFF;
+}
+
+.dashboard-card-02-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.dashboard-card-02-subtitle {
+    color: #E3DFFF;
+}
+
+.dashboard-card-02-balance {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.dashboard-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dashboard-button {
+    height: 65px;
+    padding: 15px;
+    border-radius: 68px;
+    border: 1px solid #E3DFFF;
+    background: rgba(227, 223, 255, 0.10);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06px;
+}
+
+.dashboard-title-02 {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.06px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-title-02-icon {
+    cursor: pointer;
+}
+
+.dashboard-title-02-icon svg path {
+    stroke: var(--second-primary);
+}
+
+.dashboard-chart {
+    border-radius: 20px;
+    border: 1px solid #E3DFFF;
+
+}
+
+.dashboard-history-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    min-height: 60px;
+}
+
+.dashboard-history-tab {
+    flex: 0 0 auto;
+    /* предотвращает сжатие табов */
+    width: 115px;
+    min-height: 40px;
+    padding: 15px;
+
+    font-size: 12px;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+.dashboard-history-tab.active {
+    color: var(--second-primary);
+    font-weight: 700;
+    border: 1px solid #E3DFFF;
+}
+
+.dashboard-history-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dashboard-history-search {
+    position: relative;
+}
+
+.dashboard-history-search input {
+    border-radius: 10px;
+    background: rgba(227, 223, 255, 0.10);
+    padding: 15px;
+    padding-left: 40px;
+    height: 40px;
+    outline: none;
+    border: none;
+    font-size: 12px;
+}
+
+.dashboard-history-search input::placeholder {
+    font-size: 12px;
+}
+
+.dashboard-history-search .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    width: 16px;
+    height: 16px;
+}
+
+
+.dashboard-history {
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #E3DFFF;
+}
+
+.dashboard-history-date {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06px;
+    margin-bottom: 15px;
+}
+
+.dashboard-history-card {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.dashboard-history-card-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dashboard-history-card-title {
+    color: var(--second-primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06px;
+}
+
+.dashboard-history-card-description {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.dashboard-history-card-subtitle {
+    font-size: 12px;
+    color: rgba(25, 23, 22, 0.10);
+}
+
+.dashboard-history-card-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dashboard-history-card-balance {
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: end;
+}
+
+.dashboard-history-card-status {
+    white-space: nowrap;
+    font-size: 12px;
+    color: #0B6432;
+    text-align: end;
+}
+
+.dashboard-history-card-card_number {
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: end;
+}
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.90) 50.5%, #FFF 100%);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 30px;
+}
+
+.bottom-bar-tabs {
+    width: fit-content;
+    padding: 15px;
+    border-radius: 70px;
+    border: 1px solid #E3DFFF;
+    background: #FFF;
+    backdrop-filter: blur(25px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.bottom-bar-tab path {
+    cursor: pointer;
+    fill: #E3DFFF;
+    stroke: #E3DFFF;
+}
+
+.bottom-bar-tab.active path {
+    fill: var(--second-primary);
+    stroke: rgba(255, 255, 255, 0.5);
 }

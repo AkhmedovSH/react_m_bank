@@ -54,6 +54,13 @@
     border-radius: 90px;
     border: 1px solid rgba(227, 223, 255, 0.50);
     cursor: pointer;
+    transition: all var(--transition) ease;
+}
+
+.auth-btn .devider {
+    height: 1px;
+    flex-grow: 0;
+    transition: flex-grow var(--transition) ease;
 }
 
 .auth-btn.start {
@@ -78,6 +85,20 @@
 
 .auth-btn.small {
     width: 120px;
+}
+
+.auth-btn:hover {
+    background-color: #191716;
+    color: #FCF7FF;
+    fill: #FCF7FF;
+}
+
+.auth-btn:hover .devider {
+    flex-grow: 1;
+}
+
+.auth-btn:hover svg path {
+    stroke: #FCF7FF;
 }
 
 .auth-card {

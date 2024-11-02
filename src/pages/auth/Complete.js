@@ -3,8 +3,8 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import logo from 'assets/icons/logo.svg'
-import arrow_left from 'assets/icons/arrow_left.svg'
-import arrow_right from 'assets/icons/arrow_right_light.svg'
+import { ReactComponent as ArrowLeft } from 'assets/icons/arrow_left.svg';
+import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
 
 function RegisterPhone() {
     const navigate = useNavigate()
@@ -32,12 +32,13 @@ function RegisterPhone() {
 
                         <div className="auth-buttons">
                             <button className="auth-btn rounded" onClick={() => navigate(-1)} title="Назад">
-                                <img src={arrow_left} alt="" />
+                                <ArrowLeft />
                             </button>
 
-                            <Link className="auth-btn dark" to="/auth/welcome">
+                            <Link className="auth-btn" to="/dashboard">
                                 Перейти в кабинет!
-                                <img src={arrow_right} alt="" />
+                                <div className="devider" />
+                                <ArrowRightIcon />
                             </Link>
                         </div>
                     </div>

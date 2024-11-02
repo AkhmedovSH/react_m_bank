@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import logo from 'assets/icons/logo.svg'
-import arrow_right from 'assets/icons/arrow_right.svg'
+import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
 
 function Welcome() {
 	return (
@@ -19,13 +19,14 @@ function Welcome() {
 					</h1>
 
 					<div className="w-100 d-flex justify-content-center gap-10">
-						<Link className="auth-btn small mobile-show" to="/auth/register" onClick={() => localStorage.setItem('isRegister', false)}>
+						<Link className="auth-btn small mobile-show" to="/auth/login" onClick={() => localStorage.setItem('isRegister', false)}>
 							Вход
 						</Link>
 
 						<Link className="auth-btn" to="/auth/register" onClick={() => localStorage.setItem('isRegister', true)}>
 							Регистрация
-							<img src={arrow_right} alt="" />
+							<div className="devider"></div>
+							<ArrowRightIcon />
 						</Link>
 					</div>
 				</div>

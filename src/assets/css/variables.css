@@ -33,6 +33,7 @@
     --btn-bg: #fff;
     --btn-bg-dark: #191716;
     --second-btn-bg: #fff;
+    --transition: 0.4s;
 }
 
 #root {
@@ -43,6 +44,26 @@ body {
     font-family: 'VelaSans';
     color: var(--text-color);
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F2FDFF;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #5F48FF;
+    border-radius: 10px;
+}
+
+/* ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+} */
+
 
 .fz12 {
     font-size: 12px !important;
@@ -109,6 +130,7 @@ a {
     gap: 10px;
 }
 
-.mobile-show {
+.mobile-show,
+.mobile-show-flex {
     display: none !important;
 }
