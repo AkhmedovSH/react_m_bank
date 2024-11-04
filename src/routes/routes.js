@@ -13,9 +13,9 @@ import Login from 'pages/auth/Login'
 import Dashboard from 'pages/dashboard/Index'
 
 const publicRoutes = [
-	// { path: "/auth/welcome", component: <Welcome /> },
+	{ path: "/auth/welcome", component: <Welcome /> },
 
-	// { path: "/auth/register", component: <Register /> },
+	{ path: "/auth/register", component: <Register /> },
 	{ path: "/auth/auth", component: <Auth /> },
 
 	{ path: "/auth/login", component: <Login /> },

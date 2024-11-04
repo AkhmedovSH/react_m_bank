@@ -21,50 +21,46 @@ function Register() {
 
     return (
         <>
-            <div className="auth-bg">
-                <div className="auth-card">
-                    <img src={logo} alt="" className="logo" />
+                <img src={logo} alt="" className="logo" />
 
-                    <div className="auth-content">
-                        <div className="auth-title">
-                            Вход в аккаунт
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="email">Почта</label>
-                            <input type="text" className="auth-input" id='email' placeholder='yourmail@gmail.com'
-                                value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="password">Пароль</label>
-                            <input type="password" className="auth-input" id='password' placeholder='10+ символов'
-                                value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
-                        </div>
-
-                        <div className="agreement">
-                            <div className="agreement-checkbox"></div>
-                            <div>
-                                Я согласен с <span className="text-underline">Условиями предоставления услуг MBank</span>, Политикой
-                                конфиденциальности и настройками уведомлений по умолчанию.
-                            </div>
-                        </div>
+                <div className="auth-content">
+                    <div className="auth-title">
+                        Вход в аккаунт
                     </div>
 
-                    <div className="auth-buttons">
-                        <button className="auth-btn rounded" onClick={() => navigate(-1)} title="Назад">
-                        <ArrowLeft />
-                        </button>
+                    <div className="form-group">
+                        <label htmlFor="email">Почта</label>
+                        <input type="text" className="auth-input" id='email' placeholder='yourmail@gmail.com'
+                            value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
+                    </div>
 
-                        <Link className="auth-btn start" to="/auth/phone">
-                            Далее
-                            <div className="devider" />
+                    <div className="form-group">
+                        <label htmlFor="password">Пароль</label>
+                        <input type="password" className="auth-input" id='password' placeholder='10+ символов'
+                            value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
+                    </div>
 
-                            <ArrowRightIcon />
-                        </Link>
+                    <div className="agreement">
+                        <div className="agreement-checkbox"></div>
+                        <div>
+                            Я согласен с <span className="text-underline">Условиями предоставления услуг MBank</span>, Политикой
+                            конфиденциальности и настройками уведомлений по умолчанию.
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <div className="auth-buttons">
+                    <button className="auth-btn rounded" onClick={() => navigate(-1)} title="Назад">
+                        <ArrowLeft />
+                    </button>
+
+                    <Link className="auth-btn start" to="/auth/phone">
+                        Далее
+                        <div className="devider" />
+
+                        <ArrowRightIcon />
+                    </Link>
+                </div>
         </>
     )
 }

@@ -1,12 +1,10 @@
 import React from 'react'
 import { Route, Routes, Navigate, Outlet, useLocation } from 'react-router-dom';
 import { publicRoutes, usersRoutes } from './routes'
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 // import CashierLayout from 'containers/layout/director/Layout';
 import NoAuthLayout from '../layouts/NoAuthLayout';
-import Register from 'pages/auth/Register';
-import Welcome from 'pages/auth/Welcome';
 
 function createPublicRoutes() {
 	return publicRoutes.map((item, key) => {
@@ -50,30 +48,9 @@ const Index = () => {
 	const location = useLocation();
 
 	return (
-		<AnimatePresence>
+		<AnimatePresence mode="wait">
 			<Routes location={location} key={location.pathname}>
-				<Route
-					path="/auth/register"
-					element={
-						<Register />
-					}
-				/>
-				<Route
-					path="/auth/welcome"
-					element={
-						<motion.div
-							style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', height: '100%', overflow: 'hidden' }} // Полупрозрачный белый фон
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							transition={{ duration: 0.3 }}
-						>
-							<Welcome />
-						</motion.div>
-					}
-				/>
-
-
+	
 				<Route element={<NoAuthLayout />} path='/auth'>
 					{createPublicRoutes()}
 				</Route>

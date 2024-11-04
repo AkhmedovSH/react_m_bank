@@ -70,8 +70,14 @@
         background-image: url('../images/auth_mobile_bg.png');
     }
 
-    .auth-card {
+    .auth-motion {
         padding: 20px;
+        min-height: 100vh;
+        gap: 0;
+    }
+
+    .auth-bg.welcome .auth-motion {
+        padding: 0;
     }
 
     .auth-card .auth-content {
@@ -107,12 +113,16 @@
 
     .auth-card.bg {
         background-image: none;
-        padding: 20px;
         background-color: transparent;
+    }
+
+    .agreement {
+        font-size: 12px;
     }
 
     .form-group .auth-input {
         padding: 20px 15px;
+        height: 60px;
     }
 
     .welcome-login {
@@ -123,7 +133,9 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        top: 70px;
+        top: 20px;
+        transition: 0.5s;
+        z-index: 1;
     }
 
     .welcome-container .logo {
@@ -140,10 +152,24 @@
         background: rgba(255, 255, 255, 0.80);
         backdrop-filter: blur(25px);
         gap: 50px;
-        height: fit-content;
+        height: 210px;
         width: calc(100% - 20px);
         margin: auto;
         padding: 20px;
+        transition: all 0.5s ease;
+    }
+
+    .welcome-container.full-screen {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .move-down {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+        width: calc(100vw - 40px);
     }
 
     .welcome-container h1 {

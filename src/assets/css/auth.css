@@ -10,7 +10,7 @@
 }
 
 .auth-bg.second {
-    background-image: url('../images/auth_bg_second.png');
+    /* background-image: url('../images/auth_bg_second.png'); */
 }
 
 .welcome-container {
@@ -102,22 +102,25 @@
 }
 
 .auth-card {
-    min-height: 100%;
-    height: auto;
     width: 50%;
     margin: auto;
-    /* margin-top: 20px;
-    margin-bottom: 20px; */
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.80);
     backdrop-filter: blur(25px);
-    padding: 30px;
+}
 
+.auth-motion {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    min-height: calc(100vh - 100px);
+    padding: 30px;
+}
+
+.auth-motion.welcome {
+    justify-content: center;
 }
 
 .auth-card.bg {

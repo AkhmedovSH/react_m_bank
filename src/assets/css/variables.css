@@ -43,6 +43,7 @@
 body {
     font-family: 'VelaSans';
     color: var(--text-color);
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
