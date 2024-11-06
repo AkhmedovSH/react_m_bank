@@ -28,7 +28,7 @@ function Welcome() {
 
 			<motion.div
 				className={`welcome-container ${isFullScreen ? 'full-screen' : ''}`}
-				initial={{ width: 'calc(100% - 20px)', scale: 1, transform: 'translate(-50%, -50%)' }} // Начальное состояние
+				initial={{ width: 'calc(100% - 20px)', scale: 1, transform: window.innerWidth < 568 ? 'translate(-50%, -50%)' : '' }} // Начальное состояние
 				animate={isFullScreen ? { width: '100vw', scale: 1.05 } : {}} // Анимация при развертывании
 				transition={{
 					duration: 0.5,
