@@ -20,8 +20,8 @@
 
 @media (max-width: 768px) {
     ::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
+        width: 0;
+        height: 0;
     }
 
     ::-webkit-scrollbar-track {
@@ -209,6 +209,7 @@
     .dashboard-card {
         padding: 16px;
         width: 100%;
+        padding-bottom: 120px;
     }
 
     .dashboard-buttons {
@@ -224,5 +225,27 @@
     .dashboard-avatar img {
         width: 32px;
         height: 32px;
+    }
+
+    .dashboard-accounting-card {
+        width: calc(50% - 5px);
+    }
+
+    .col-md-6 {
+        margin-bottom: 10px;
+    }
+
+    .dashboard-button.second,
+    .dashboard-button,
+    .transaction-button {
+        width: 100%;
+    }
+
+    .transaction-status {
+        min-height: fit-content;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        row-gap: 10px;
     }
 }

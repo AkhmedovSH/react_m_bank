@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import ReactApexChart from 'react-apexcharts';
 
-import mastercard from 'assets/icons/mastercard.svg';
-import eye from 'assets/icons/eye.svg';
-import dashboardButton1 from 'assets/icons/dashboard_button_1.svg';
-import dashboardButton2 from 'assets/icons/dashboard_button_2.svg';
 import search from 'assets/icons/search.svg';
 
+import accounting_1 from 'assets/icons/accounting_1.svg';
+import accounting_2 from 'assets/icons/accounting_2.svg';
+import accounting_3 from 'assets/icons/accounting_3.svg';
+import accounting_4 from 'assets/icons/accounting_4.svg';
+import accounting_5 from 'assets/icons/accounting_5.svg';
+import accounting_6 from 'assets/icons/accounting_6.svg';
+
+import { ReactComponent as Eye } from 'assets/icons/eye.svg';
 import { ReactComponent as ArrowRight } from 'assets/icons/arrow_right.svg';
+import { ReactComponent as DashboardButton1 } from 'assets/icons/dashboard_button_1.svg';
+import { ReactComponent as DashboardButton2 } from 'assets/icons/dashboard_button_2.svg';
 
 import history_1 from 'assets/images/history_1.png';
 import history_2 from 'assets/images/history_2.png';
@@ -118,22 +124,19 @@ function Dashboard() {
 
     return (
         <>
-            <div className="row">
+            <div className="row wave-animation">
                 <div className="col-md-6">
                     <div className="dashboard-card-02">
                         <div className="d-flex justify-content-between">
                             <span className="dashboard-card-02-title">
                                 Ваш общий счет
                             </span>
-
-
-                            <img src={mastercard} alt="" />
                         </div>
                         <div>
                             <div className="d-flex align-items-center">
                                 Номер счета:
                                 <span className="dashboard-card-02-subtitle mx-1"> XXXX XXXX XXXX</span>
-                                <img src={eye} alt="" />
+                                <Eye className="dashboard-eye" />
                             </div>
                             <div className="dashboard-card-02-balance">
                                 16.343.445,45
@@ -145,18 +148,18 @@ function Dashboard() {
                 <div className="col-md-6">
                     <div className="dashboard-buttons">
                         <button className="dashboard-button">
-                            <img src={dashboardButton1} alt="" />
+                            <DashboardButton1 />
                             Отправить деньги
                         </button>
                         <button className="dashboard-button">
-                            <img src={dashboardButton2} alt="" />
+                            <DashboardButton2 />
                             Заплатить по документу
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div className="dashboard-title-02">
+            <div className="dashboard-title-02 wave-animation">
                 Траты по карте
 
                 <div className="dashboard-title-02-icon">
@@ -164,7 +167,7 @@ function Dashboard() {
                 </div>
             </div>
 
-            <div className={"dashboard-chart"}>
+            <div className={"dashboard-chart wave-animation"}>
                 <ReactApexChart
                     options={areaChart.options}
                     series={areaChart.series}
@@ -173,7 +176,7 @@ function Dashboard() {
                 />
             </div>
 
-            <div className="dashboard-title-02">
+            <div className="dashboard-title-02 wave-animation">
                 История
 
                 <div className="dashboard-title-02-icon">
@@ -181,7 +184,7 @@ function Dashboard() {
                 </div>
             </div>
 
-            <div className="dashboard-history-tabs">
+            <div className="dashboard-history-tabs wave-animation">
                 {historyTabs.map((item, index) => (
                     <div className={"dashboard-history-tab " + (activeHistoryTab === item.id ? 'active' : '')}
                         key={index} onClick={() => setActiveHistoryTab(item.id)}>
@@ -190,7 +193,7 @@ function Dashboard() {
                 ))}
             </div>
 
-            <div className="dashboard-history">
+            <div className="dashboard-history wave-animation">
                 <div className="dashboard-history-filter">
                     <div className="dashboard-history-search">
                         <input type="text" placeholder="Поиск..." />
@@ -250,6 +253,62 @@ function Dashboard() {
                         <div className="dashboard-history-card-card_number">
                             Карта **** 9934
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="dashboard-title-02">
+                Бухгалтерия
+            </div>
+
+            <div className="d-flex flex-wrap gap-10">
+                <div className="dashboard-accounting-card">
+                    <img src={accounting_1} alt="" width={32} height={32} />
+
+                    <div>
+                        Онлайн бухгалтерия <br />
+                        для ИП
+                    </div>
+                </div>
+
+                <div className="dashboard-accounting-card">
+                    <img src={accounting_2} alt="" width={32} height={32} />
+
+                    <div>
+                        Кадровый <br />
+                        и бухгалтерский учет
+                    </div>
+                </div>
+
+                <div className="dashboard-accounting-card">
+                    <img src={accounting_3} alt="" width={32} height={32} />
+
+                    <div>
+                        Зарплатный проект
+                    </div>
+                </div>
+
+                <div className="dashboard-accounting-card">
+                    <img src={accounting_4} alt="" width={32} height={32} />
+
+                    <div>
+                        Кабинет бухгалтера
+                    </div>
+                </div>
+
+                <div className="dashboard-accounting-card">
+                    <img src={accounting_5} alt="" width={32} height={32} />
+
+                    <div>
+                        Работа с самозанятыми
+                    </div>
+                </div>
+
+                <div className="dashboard-accounting-card">
+                    <img src={accounting_6} alt="" width={32} height={32} />
+
+                    <div>
+                        Электронный документ
                     </div>
                 </div>
             </div>

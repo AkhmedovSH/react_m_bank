@@ -27,8 +27,10 @@
 :root {
     --primary: #fff;
     --second-primary: #5F48FF;
-    --text-color: #191716;
+    --blue: #10193A;
+    --text-color: #10193A;
     --text-color-light: #F2FDFF;
+    --border-color: rgba(16, 25, 58, 0.10);
 
     --btn-bg: #fff;
     --btn-bg-dark: #191716;
@@ -131,7 +133,48 @@ a {
     gap: 10px;
 }
 
+.gap-20 {
+    gap: 20px;
+}
+
 .mobile-show,
 .mobile-show-flex {
     display: none !important;
+}
+
+label.switch>input[type=checkbox] {
+    opacity: 0;
+    display: none;
+}
+
+label.switch>div.switch-btn {
+    position: relative;
+    width: 51px;
+    height: 31px;
+    background: #f1f1f1;
+    border-radius: 25.5px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+label.switch>div.switch-btn:before {
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    background: linear-gradient(white, #f2f2f2);
+    left: 2px;
+    top: 50%;
+    transition: all 200ms ease-out;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 8px 6px -4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-50%);
+}
+
+label.switch>input[type=checkbox]:checked+div.switch-btn {
+    background: #34C759;
+}
+
+label.switch>input[type=checkbox]:checked+div.switch-btn:before {
+    left: 22px;
 }
