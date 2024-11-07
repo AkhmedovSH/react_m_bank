@@ -9,6 +9,10 @@
     overflow: auto;
 }
 
+.auth-bg.welcome {
+    overflow: hidden;
+}  
+
 .auth-bg.second {
     /* background-image: url('../images/auth_bg_second.png'); */
 }
