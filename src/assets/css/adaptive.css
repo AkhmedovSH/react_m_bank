@@ -53,6 +53,12 @@
 }
 
 @media (max-width: 576px) {
+	:root {
+		--default-height: 60px;
+		--second-default-height: 60px;
+		--default-padding: 20px;
+	}
+
 	.mobile-show {
 		display: inherit !important;
 	}
@@ -82,6 +88,13 @@
 
 	.auth-card .auth-content {
 		width: 100%;
+	}
+
+	.auth-card.bg .auth-content {
+		padding: 20px;
+		border-radius: 20px;
+		background: rgba(255, 255, 255, 0.80);
+		backdrop-filter: blur(25px);
 	}
 
 	.auth-buttons {

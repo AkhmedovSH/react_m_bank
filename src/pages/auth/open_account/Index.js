@@ -14,7 +14,7 @@ function Index() {
 			<img src={logo} alt="" className="logo" />
 
 			<div className="auth-content align-items-center">
-				<div className="auth-title text-center">
+				<div className="auth-title">
 					Чтобы открыть счет <br />
 					нажмите кнопку ниже
 				</div>
@@ -24,7 +24,7 @@ function Index() {
 						<ArrowLeft />
 					</button>
 
-					<Link className="auth-btn" to="/auth/open-account/success">
+					<Link className="auth-btn start" to="/auth/open-account/success">
 						Открыть счет
 						<div className="devider" />
 						<ArrowRightIcon />

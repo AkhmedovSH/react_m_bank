@@ -44,7 +44,7 @@ function Welcome() {
 
 				<div className={`d-flex justify-content-center gap-10 ${isFullScreen ? 'move-down' : 'w-100'}`}>
 					<button
-						className={`auth-btn mobile-show ${isFullScreen ? 'rounded' : 'small'}`}
+						className={`auth-btn mobile-show ${isFullScreen ? 'back rounded' : 'small'}`}
 						onClick={() => handleExpand('/auth/login', false)}
 						disabled={isAnimating}
 					>

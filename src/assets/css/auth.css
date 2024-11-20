@@ -103,6 +103,14 @@
 	fill: #FCF7FF;
 }
 
+.auth-btn.primary-hover {
+	height: 65px;
+}
+
+.auth-btn.primary-hover:hover {
+	background-color: var(--second-primary);
+}
+
 .auth-btn:hover .devider {
 	flex-grow: 1;
 }

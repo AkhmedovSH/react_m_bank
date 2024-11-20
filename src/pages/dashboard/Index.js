@@ -16,6 +16,7 @@ import Profile from './Profile';
 import Transations from './Transations';
 import History from './History';
 import Notifications from './Notifications';
+import OnlineAccounting from './OnlineAccounting';
 
 function Index() {
     const [activeTab, setActiveTab] = useState(1)
@@ -60,7 +61,7 @@ function Index() {
 
                         <div className="d-flex align-items-center gap-10 mobile-hide">
                             <div className="dashboard-tabs">
-                                <div className={"dashboard-tab " + (activeTab === 1 ? 'active' : '')} onClick={() => changeActiveTab(1)}>
+                                <div className={"dashboard-tab " + (activeTab === 1 || activeTab === 6 ? 'active' : '')} onClick={() => changeActiveTab(1)}>
                                     <Dashboard1 />
                                 </div>
                                 <div className={"dashboard-tab " + (activeTab === 2 ? 'active' : '')} onClick={() => changeActiveTab(2)}>
@@ -87,7 +88,7 @@ function Index() {
 
 
                     {activeTab === 1 &&
-                        <Dashboard />
+                        <Dashboard setActiveTab={setActiveTab} />
                     }
                     {activeTab === 2 &&
                         <Transations />
@@ -101,12 +102,15 @@ function Index() {
                     {activeTab === 5 &&
                         <Profile />
                     }
+                    {activeTab === 6 &&
+                        <OnlineAccounting />
+                    }
                 </div>
 
                 {/* Mobile bottom bar */}
                 <div className="mobile-show-flex bottom-bar">
                     <div className="bottom-bar-tabs">
-                        <div className={"bottom-bar-tab " + (activeTab === 1 ? 'active' : '')} onClick={() => changeActiveTab(1)}>
+                        <div className={"bottom-bar-tab " + (activeTab === 1 || activeTab === 6 ? 'active' : '')} onClick={() => changeActiveTab(1)}>
                             <Dashboard1 />
                         </div>
                         <div className={"bottom-bar-tab " + (activeTab === 2 ? 'active' : '')} onClick={() => changeActiveTab(2)}>

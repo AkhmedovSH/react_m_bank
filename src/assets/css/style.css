@@ -41,6 +41,7 @@
 
 	font-size: 12px;
 	width: calc(25% - 7.5px);
+	cursor: pointer;
 }
 
 .dashboard-title {
@@ -372,13 +373,29 @@
 	stroke: rgba(255, 255, 255, 0.5);
 }
 
+.transation-btn {
+	width: 100%;
+	border-radius: 68px;
+	background: #F5F5F7;
+	padding: 15px;
+	height: var(--second-default-height);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	outline: none;
+	border: none;
+}
+
+.transation-btn svg path {
+	fill: #10193A;
+}
+
 .transaction-gradient-card {
-	height: var(--default-height);
 	padding: 15px;
 	border-radius: 20px;
 	border: 1px solid var(--border-color);
 	background: radial-gradient(166.35% 111.8% at 100% 0%, rgba(214, 193, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%), #FFF;
-
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -391,11 +408,107 @@
 	font-weight: bold;
 }
 
+.transation-input {
+	position: relative;
+	height: var(--second-default-height);
+	margin-bottom: 10px;
+}
+
+.transation-input input {
+	width: 100%;
+	border-radius: 20px;
+	border: 1px solid var(--border-color);
+	background: #FFF;
+	padding: 15px;
+	outline: none;
+}
+
+.transation-input input::placeholder {
+	color: rgba(16, 25, 58, 0.50);
+	font-size: 16px;
+	user-select: none;
+}
+
+.transation-input.second input {
+	text-align: end;
+}
+
+.right-icon {
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+
+.transation-input-left {
+	position: absolute;
+	left: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	color: rgba(0, 0, 0, 0);
+	opacity: 1;
+	display: block;
+	background: url('../icons/calendar.svg') no-repeat;
+	width: 20px;
+	height: 20px;
+	border-width: thin;
+}
+
+.transaction-description {
+	margin: 0 15px;
+	font-size: 12px;
+	color: rgba(16, 25, 58, 0.50);
+}
+
+.transaction-menu {
+	position: absolute;
+	right: 10px;
+	top: calc(100%);
+	max-width: 400px;
+	width: 100%;
+	padding: 15px;
+	border-radius: 20px 10px 20px 20px;
+	border: 1px solid rgba(16, 25, 58, 0.10);
+	background: #FFF;
+	z-index: 1;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.2s;
+	transform: translateY(-10px);
+	/* max-height: 250px; */
+	overflow: auto;
+}
+
+.transaction-menu.active {
+	visibility: visible;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.transaction-menu-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #F5F5F7;
+	cursor: pointer;
+}
+
+.transaction-menu-item:last-child {
+	margin-bottom: 0;
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
 .notification {
 	padding: 15px;
 	border-radius: 20px;
 	border: 1px solid var(--border-color);
-
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -463,4 +576,42 @@
 .language-block.active svg path {
 	fill: var(--second-primary);
 	stroke: var(--second-primary);
+}
+
+.online-accounting-title {
+	font-size: 26px;
+	font-weight: bold; 
+}
+
+.online-accounting-card {
+	padding: 15px;
+	border-radius: 20px;
+	border: 1px solid rgba(16, 25, 58, 0.10);
+	background: radial-gradient(166.35% 111.8% at 100% 0%, rgba(214, 193, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%), #FFF;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 140px;
+
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 0.06px;
+}
+
+.online-accounting-card-btn {
+	width: 200px;
+	height: 40px;
+	border-radius: 20px;
+	border: 1px solid rgba(227, 223, 255, 0.50);
+	background: rgba(255, 255, 255, 0.80);
+	backdrop-filter: blur(25px);
+
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 0.06px;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }

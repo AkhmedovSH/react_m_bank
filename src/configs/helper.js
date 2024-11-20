@@ -10,3 +10,5 @@ export function formatDateBackend(date) {
         return date
     }
 }
+
+export const handleFocus = (event) => event.target.select();

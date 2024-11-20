@@ -21,7 +21,7 @@ import history_2 from 'assets/images/history_2.png';
 const data = [5000000, 4000000, 4000000, 5000000, 8000000, 8200000, 6000000, 7200000, 6500000, 7200000, 8000000, 5000000];
 const labels = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 
-function Dashboard() {
+function Dashboard({ setActiveTab }) {
     const [activeHistoryTab, setActiveHistoryTab] = useState(1)
 
     const [areaChart] = useState({
@@ -262,7 +262,7 @@ function Dashboard() {
             </div>
 
             <div className="d-flex flex-wrap gap-10">
-                <div className="dashboard-accounting-card">
+                <div className="dashboard-accounting-card" onClick={() => setActiveTab(6)}>
                     <img src={accounting_1} alt="" width={32} height={32} />
 
                     <div>
