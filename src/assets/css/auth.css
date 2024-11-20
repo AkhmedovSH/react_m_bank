@@ -58,13 +58,14 @@
 	border-radius: 90px;
 	border: 1px solid rgba(227, 223, 255, 0.50);
 	cursor: pointer;
-	transition: all var(--transition) ease;
+	transition: all var(--transition) ease color 0s;
 }
 
 .auth-btn .devider {
 	height: 1px;
 	flex-grow: 0;
 	transition: flex-grow var(--transition) ease;
+	margin-right: -10px;
 }
 
 .auth-btn.start {
@@ -108,6 +109,21 @@
 
 .auth-btn:hover svg path {
 	stroke: #FCF7FF;
+	transition: 0.3s;
+}
+
+.auth-btn:disabled {
+	cursor: default;
+	background-color: #fff;
+	color: rgba(16, 25, 58, 0.10);
+}
+
+.auth-btn:disabled svg path {
+	stroke: rgba(16, 25, 58, 0.10);
+}
+
+.auth-btn:disabled .devider {
+	flex-grow: 0;
 }
 
 .auth-card {
@@ -200,6 +216,23 @@
 	border: 1px solid #19171680;
 	border-radius: 8px;
 	cursor: pointer;
+	transition: 0.2s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.agreement-checkbox img {
+	user-select: none;
+	opacity: 0;
+}
+
+.agreement-checkbox.active {
+	background-color: #10193A;
+}
+
+.agreement-checkbox.active img {
+	opacity: 1;
 }
 
 .agreement {

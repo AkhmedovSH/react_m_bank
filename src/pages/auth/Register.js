@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import MaskedInput from 'react-text-mask'
 
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import logo from 'assets/icons/logo.svg'
+import check from 'assets/icons/check.svg'
 import { ReactComponent as ArrowLeft } from 'assets/icons/arrow_left.svg';
 import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
+import { httpOk, post } from 'configs/api'
+import { formatDateBackend } from 'configs/helper'
 
 function Register() {
 	const navigate = useNavigate()
@@ -19,6 +22,15 @@ function Register() {
 		password: '',
 		agreement: false,
 	})
+
+	async function register() {
+		var sendData = { ...data }
+		sendData.birhday = formatDateBackend(sendData.birhday)
+		const response = await post('/api/auth/register', sendData)
+		if (httpOk(response)) {
+			navigate('/auth/phone')
+		}
+	}
 
 	return (
 		<>
@@ -78,9 +90,13 @@ function Register() {
 				</div>
 
 				<div className="agreement">
-					<div className="agreement-checkbox"></div>
+					<div className={"agreement-checkbox " + (data.agreement ? 'active' : '')} onClick={() => setData({ ...data, agreement: !data.agreement })} >
+						<img src={check} alt="" />
+					</div>
 					<div>
-						Я согласен с <span className="text-underline">Условиями предоставления услуг MBank</span>, Политикой
+						Я согласен с
+						<span className="text-underline cursor">Условиями предоставления услуг MBank</span>
+						, Политикой
 						конфиденциальности и настройками уведомлений по умолчанию.
 					</div>
 				</div>
@@ -91,11 +107,11 @@ function Register() {
 					<ArrowLeft />
 				</button>
 
-				<Link className="auth-btn start" to="/auth/phone">
+				<button className="auth-btn start" onClick={() => register()} disabled={!data.agreement}>
 					Далее
 					<div className="devider" />
 					<ArrowRightIcon />
-				</Link>
+				</button>
 			</div>
 		</>
 	)
