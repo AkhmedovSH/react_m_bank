@@ -1,13 +1,22 @@
 import React from 'react'
 import { Route, Routes, Navigate, Outlet, useLocation } from 'react-router-dom';
-import { publicRoutes, usersRoutes } from './routes'
+import { publicRoutes, usersRoutes, authRoutes } from './routes'
 import { AnimatePresence } from 'framer-motion';
 
 // import CashierLayout from 'containers/layout/director/Layout';
 import NoAuthLayout from '../layouts/NoAuthLayout';
+import NoAuthLayoutBg from '../layouts/NoAuthLayoutBg';
 
 function createPublicRoutes() {
 	return publicRoutes.map((item, key) => {
+		return (
+			<Route key={key} path={item.path} element={item.component} />
+		);
+	});
+}
+
+function createAuthRoutes() {
+	return authRoutes.map((item, key) => {
 		return (
 			<Route key={key} path={item.path} element={item.component} />
 		);
@@ -50,9 +59,13 @@ const Index = () => {
 	return (
 		<AnimatePresence mode="wait">
 			<Routes location={location} key={location.pathname}>
-	
+
 				<Route element={<NoAuthLayout />} path='/auth'>
 					{createPublicRoutes()}
+				</Route>
+
+				<Route element={<NoAuthLayoutBg />} path='/auth'>
+					{createAuthRoutes()}
 				</Route>
 
 				<Route >
