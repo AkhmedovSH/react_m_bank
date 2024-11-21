@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ReactApexChart from 'react-apexcharts';
 
 import search from 'assets/icons/search.svg';
+import arrow_bottom from 'assets/icons/arrow_bottom.svg';
 
 import accounting_1 from 'assets/icons/accounting_1.svg';
 import accounting_2 from 'assets/icons/accounting_2.svg';
@@ -29,7 +30,41 @@ const data = [5000000, 4000000, 4000000, 5000000, 8000000, 8200000, 6000000, 720
 const labels = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 
 function Dashboard({ setActiveTab }) {
+    const menuRef = useRef(null)
+    const menuRef2 = useRef(null)
+    const menuRef3 = useRef(null)
+
+    useOutsideAlerter(menuRef, 1);
+    useOutsideAlerter(menuRef2, 2);
+    useOutsideAlerter(menuRef3, 3);
+
     const [activeHistoryTab, setActiveHistoryTab] = useState(1)
+    const [showMenu, setShowMenu] = useState(false)
+    const [showMenu2, setShowMenu2] = useState(false)
+    const [showMenu3, setShowMenu3] = useState(false)
+
+
+    function useOutsideAlerter(ref, menuNum) {
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    if (menuNum === 1) {
+                        setShowMenu(false)
+                    }
+                    if (menuNum === 2) {
+                        setShowMenu2(false)
+                    }
+                    if (menuNum === 3) {
+                        setShowMenu3(false)
+                    }
+                }
+            }
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
 
     const [areaChart] = useState({
         series: [{
@@ -251,6 +286,81 @@ function Dashboard({ setActiveTab }) {
                     <div className="dashboard-history-search">
                         <input type="text" placeholder="Поиск..." />
                         <img src={search} alt="" className="icon" />
+                    </div>
+
+                    <div className="dashboard-history-menu" ref={menuRef}>
+                        <div className="dashboard-history-menu-btn" onClick={() => setShowMenu(!showMenu)}>
+                            За всё время
+                        </div>
+                        <img src={arrow_bottom} alt="" className="right-icon" onClick={() => setShowMenu(!showMenu)} />
+
+                        <div className={`transaction-menu second ${showMenu ? 'active' : ''}`}>
+                            <div className="transaction-menu-item">
+                                <div>За всё время</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>Год</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>Месяц</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>Неделю</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>День</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="dashboard-history-menu" ref={menuRef2}>
+                        <div className="dashboard-history-menu-btn" onClick={() => setShowMenu2(!showMenu2)}>
+                            Все счета
+                        </div>
+                        <img src={arrow_bottom} alt="" className="right-icon" onClick={() => setShowMenu2(!showMenu2)} />
+
+                        <div className={`transaction-menu second ${showMenu2 ? 'active' : ''}`}>
+                            <div className="transaction-menu-item">
+                                <div>Все счета</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>**** 9934</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>**** 3313</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>**** 7118</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>**** 2431</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="dashboard-history-menu" ref={menuRef3}>
+                        <div className="dashboard-history-menu-btn" onClick={() => setShowMenu3(!showMenu3)}>
+                            Все карты
+                        </div>
+                        <img src={arrow_bottom} alt="" className="right-icon" onClick={() => setShowMenu3(!showMenu3)} />
+
+                        <div className={`transaction-menu second ${showMenu3 ? 'active' : ''}`}>
+                            <div className="transaction-menu-item">
+                                <div>Все карты</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>**** 9934</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>**** 3313</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>**** 7118</div>
+                            </div>
+                            <div className="transaction-menu-item">
+                                <div>**** 2431</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

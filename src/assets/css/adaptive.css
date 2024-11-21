@@ -252,4 +252,8 @@
 	.dashboard-button {
 		width: 100%;
 	}
+
+	.dashboard-history-filter {
+		display: none;
+	}
 }

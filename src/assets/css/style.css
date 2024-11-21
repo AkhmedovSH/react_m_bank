@@ -229,6 +229,7 @@
 
 .dashboard-history-filter {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 10px;
 	margin-bottom: 20px;
 }
@@ -239,17 +240,37 @@
 
 .dashboard-history-search input {
 	border-radius: 10px;
-	background: #F5F5F7;
+	border: 1px solid rgba(16, 25, 58, 0.10);
+	background: #fff;
 	padding: 15px;
 	padding-left: 40px;
 	height: 40px;
 	outline: none;
-	border: none;
 	font-size: 12px;
 }
 
 .dashboard-history-search input::placeholder {
 	font-size: 12px;
+}
+
+.dashboard-history-menu {
+	position: relative;
+}
+
+.dashboard-history-menu-btn {
+	width: 200px;
+	border-radius: 10px;
+	border: 1px solid rgba(16, 25, 58, 0.10);
+	background: #fff;
+	padding: 15px;
+	height: 40px;
+	outline: none;
+	font-size: 12px;
+
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	user-select: none;
 }
 
 .dashboard-history-search .icon {
@@ -483,6 +504,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	overflow: auto;
 }
 
+.transaction-menu.second {
+	right: 0;
+	top: calc(100% + 10px);
+}
+
 .transaction-menu.active {
 	visibility: visible;
 	opacity: 1;
@@ -580,7 +606,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .online-accounting-title {
 	font-size: 26px;
-	font-weight: bold; 
+	font-weight: bold;
 }
 
 .online-accounting-card {
