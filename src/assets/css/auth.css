@@ -304,6 +304,7 @@
 	padding: 20px;
 	gap: 20px;
 	align-items: flex-start;
+	width: 100%;
 }
 
 .open-account-card.second .open-account-card-title {

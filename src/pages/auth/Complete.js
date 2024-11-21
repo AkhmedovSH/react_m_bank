@@ -9,7 +9,7 @@ import { get, httpOk } from 'configs/api';
 
 function RegisterPhone() {
 	const navigate = useNavigate()
-	const isRegister = localStorage.getItem('isRegister')
+	const isRegister = localStorage.getItem('isRegister')	
 
 	const [user, setUser] = useState({})
 

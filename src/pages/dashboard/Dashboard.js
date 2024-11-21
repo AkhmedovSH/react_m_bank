@@ -10,13 +10,20 @@ import accounting_4 from 'assets/icons/accounting_4.svg';
 import accounting_5 from 'assets/icons/accounting_5.svg';
 import accounting_6 from 'assets/icons/accounting_6.svg';
 
-import { ReactComponent as Eye } from 'assets/icons/eye.svg';
+import complete_register_1 from 'assets/icons/complete_register_1.svg';
+import complete_register_2 from 'assets/icons/complete_register_2.svg';
+import complete_register_3 from 'assets/icons/complete_register_3.svg';
+import complete_register_4 from 'assets/icons/complete_register_4.svg';
+
+// import { ReactComponent as Eye } from 'assets/icons/eye.svg';
+import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
 import { ReactComponent as ArrowRight } from 'assets/icons/arrow_right.svg';
 import { ReactComponent as DashboardButton1 } from 'assets/icons/dashboard_button_1.svg';
 import { ReactComponent as DashboardButton2 } from 'assets/icons/dashboard_button_2.svg';
 
 import history_1 from 'assets/images/history_1.png';
 import history_2 from 'assets/images/history_2.png';
+import { Link } from 'react-router-dom';
 
 const data = [5000000, 4000000, 4000000, 5000000, 8000000, 8200000, 6000000, 7200000, 6500000, 7200000, 8000000, 5000000];
 const labels = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
@@ -133,14 +140,18 @@ function Dashboard({ setActiveTab }) {
                             </span>
                         </div>
                         <div>
-                            <div className="d-flex align-items-center">
+                            <Link className="online-accounting-card-btn" to="/auth/open-account">
+                                Открыть счет
+                                <ArrowRightIcon />
+                            </Link>
+                            {/* <div className="d-flex align-items-center">
                                 Номер счета:
                                 <span className="dashboard-card-02-subtitle mx-1"> XXXX XXXX XXXX</span>
                                 <Eye className="dashboard-eye" />
                             </div>
                             <div className="dashboard-card-02-balance">
                                 16.343.445,45
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -157,6 +168,48 @@ function Dashboard({ setActiveTab }) {
                         </button>
                     </div>
                 </div>
+            </div>
+
+            <div className="dashboard-title-02 wave-animation">
+                Завершите регистрацию
+
+                <div className="dashboard-title-02-icon">
+                    <ArrowRight />
+                </div>
+            </div>
+
+            <div className="d-flex flex-wrap gap-10 wave-animation">
+                <Link className="dashboard-accounting-card" to="/auth/open-company">
+                    <img src={complete_register_1} alt="" width={32} height={32} />
+
+                    <div>
+                        Добавьте ИП или ООО
+                    </div>
+                </Link>
+
+                <Link className="dashboard-accounting-card" to="/auth/eds">
+                    <img src={complete_register_2} alt="" width={32} height={32} />
+
+                    <div>
+                        Подключите ЭЦП
+                    </div>
+                </Link>
+
+                <Link className="dashboard-accounting-card" to="/dashboard">
+                    <img src={complete_register_3} alt="" width={32} height={32} />
+
+                    <div>
+                        Подтвердите почту
+                    </div>
+                </Link>
+
+                <Link className="dashboard-accounting-card" to="/auth/activity">
+                    <img src={complete_register_4} alt="" width={32} height={32} />
+
+                    <div>
+                        Выбрать вид деятельности
+                    </div>
+                </Link>
             </div>
 
             <div className="dashboard-title-02 wave-animation">

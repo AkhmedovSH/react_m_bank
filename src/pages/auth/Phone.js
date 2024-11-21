@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import MaskedInput from 'react-text-mask'
 
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
@@ -14,8 +14,11 @@ import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
 
 function RegisterPhone() {
 	const navigate = useNavigate()
-	const isRegister = localStorage.getItem('isRegister')
+	const otpCodeInputRef = useRef(null); // Создаем реф для input
+
 	const [searchParams] = useSearchParams();
+	const urlPrefix = localStorage.getItem('isRegister') == 'false' ? 'login' : 'register'
+
 
 	const [errors, setErrors] = useState({});
 	const [data, setData] = useState({
@@ -55,9 +58,11 @@ function RegisterPhone() {
 			phone_number: '+' + unMaskPhoneNumber(data.phone_number),
 		};
 
-		const response = await post('/api/auth/register-phone/', sendData, { guest: true })
+		const response = await post(`/api/auth/${urlPrefix}-phone`, sendData, { guest: true })
 		if (httpOk(response)) {
-
+			if (otpCodeInputRef.current) {
+				otpCodeInputRef.current.focus();
+			}
 		}
 	}
 
@@ -70,7 +75,7 @@ function RegisterPhone() {
 			otp_code: data.otp_code.replace(/\s/g, ''),
 		};
 
-		const response = await post('/api/auth/register-verify/', sendData, { guest: true })
+		const response = await post(`/api/auth/${urlPrefix}-verify/`, sendData, { guest: true })
 		if (httpOk(response)) {
 			localStorage.setItem('token', response.data.access_token)
 			navigate('/auth/complete')
@@ -129,6 +134,7 @@ function RegisterPhone() {
 					<div className={`form-group ${errors.otp_code ? 'error' : ''}`}>
 						<label htmlFor="otp_code">Введите код из СМС</label>
 						<MaskedInput
+							ref={otpCodeInputRef}
 							type="text"
 							className="auth-input"
 							id="otp_code"

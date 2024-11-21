@@ -24,7 +24,7 @@ function Index() {
 						<ArrowLeft />
 					</button>
 
-					<Link className="auth-btn start" to="/auth/open-account/success">
+					<Link className="auth-btn start" to="/auth/open-account/error">
 						Открыть счет
 						<div className="devider" />
 						<ArrowRightIcon />

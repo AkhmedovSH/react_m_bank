@@ -2,7 +2,6 @@ import React from 'react'
 
 import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
 
-
 function OnlineAccounting() {
     return (
         <>
