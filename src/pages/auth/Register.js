@@ -1,34 +1,62 @@
 import React, { useState } from 'react'
 import MaskedInput from 'react-text-mask'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate  } from 'react-router-dom'
+
+import { httpOk, post } from 'configs/api'
+import { formatDateBackend } from 'configs/helper'
 
 import logo from 'assets/icons/logo.svg'
 import check from 'assets/icons/check.svg'
+import validation from 'assets/icons/validation.svg'
 import { ReactComponent as ArrowLeft } from 'assets/icons/arrow_left.svg';
 import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
-import { httpOk, post } from 'configs/api'
-import { formatDateBackend } from 'configs/helper'
 
 function Register() {
 	const navigate = useNavigate()
 
+	const [errors, setErrors] = useState({});
 	const [data, setData] = useState({
 		first_name: '',
 		last_name: '',
 		middle_name: '',
-		birhday: '',
+		birth_date: '',
 		email: '',
 		password: '',
 		agreement: false,
 	})
 
+	function validateFields() {
+		const newErrors = {};
+
+		if (!data.first_name.trim()) newErrors.first_name = 'Обязательное поле';
+		if (!data.last_name.trim()) newErrors.last_name = 'Обязательное поле';
+		if (!data.middle_name.trim()) newErrors.middle_name = 'Обязательное поле';
+
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!data.email.trim() || !emailRegex.test(data.email)) newErrors.email = 'Некорректный email';
+
+		const passwordRegex = /.{10,}/;
+		if (!data.password.trim() || !passwordRegex.test(data.password)) newErrors.password = 'Пароль должен содержать 10+ символов';
+
+		const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+		if (!data.birth_date.trim() || !dateRegex.test(data.birth_date)) newErrors.birth_date = 'Некорректная дата';
+
+		setErrors(newErrors);
+		return Object.keys(newErrors).length === 0; 
+	}
+
+
 	async function register() {
+		if (!validateFields()) return;
+
 		var sendData = { ...data }
-		sendData.birhday = formatDateBackend(sendData.birhday)
-		const response = await post('/api/auth/register', sendData)
+		sendData.birth_date = formatDateBackend(data.birth_date)
+		console.log(sendData);
+
+		const response = await post('/api/auth/register/', sendData, { guest: true })
 		if (httpOk(response)) {
-			navigate('/auth/phone')
+			navigate(`/auth/phone?session_id=${response.data.session_id}`)
 		}
 	}
 
@@ -42,51 +70,81 @@ function Register() {
 				</div>
 
 				<div className="auth-group">
-					<div className="form-group">
+					<div className={`form-group ${errors.first_name && 'error'}`}>
 						<label htmlFor="first_name">Имя</label>
 						<input type="text" className="auth-input" id='first_name' placeholder='Камрон'
-							value={data.first_name} onChange={(e) => setData({ ...data, first_name: e.target.value })} />
+							value={data.first_name} onChange={(e) => setData({ ...data, first_name: e.target.value })}
+						/>
+						<div className="message">
+							<img src={validation} alt="" width={24} />
+							{errors.first_name}
+						</div>
 					</div>
 
-					<div className="form-group">
+					<div className={`form-group ${errors.last_name && 'error'}`}>
 						<label htmlFor="last_name">Фамилия</label>
 						<input type="text" className="auth-input" id='last_name' placeholder='Камрон'
-							value={data.last_name} onChange={(e) => setData({ ...data, last_name: e.target.value })} />
+							value={data.last_name} onChange={(e) => setData({ ...data, last_name: e.target.value })}
+						/>
+						<div className="message">
+							<img src={validation} alt="" width={24} />
+							{errors.last_name}
+						</div>
 					</div>
 				</div>
 
 				<div className="auth-group">
-					<div className="form-group">
+					<div className={`form-group ${errors.middle_name && 'error'}`}>
 						<label htmlFor="middle_name">Отчество</label>
 						<input type="text" className="auth-input" id='middle_name' placeholder='Козимович'
-							value={data.middle_name} onChange={(e) => setData({ ...data, middle_name: e.target.value })} />
+							value={data.middle_name} onChange={(e) => setData({ ...data, middle_name: e.target.value })}
+						/>
+						<div className="message">
+							<img src={validation} alt="" width={24} />
+							{errors.middle_name}
+						</div>
 					</div>
 
-					<div className="form-group">
-						<label htmlFor="birhday">Дата рождения</label>
+					<div className={`form-group ${errors.birth_date && 'error'}`}>
+						<label htmlFor="birth_date">Дата рождения</label>
 						<MaskedInput
 							type="text"
 							className="auth-input"
-							id='birhday'
+							id='birth_date'
 							placeholder='29/11/2006'
-							mask={[/[0-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/,]}
+							mask={[/[0-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
 							guide={true}
-							value={data.birhday}
-							onChange={(e) => setData({ ...data, birhday: e.target.value })}
+							value={data.birth_date}
+							onChange={(e) => setData({ ...data, birth_date: e.target.value })}
 						/>
+						<div className="message">
+							<img src={validation} alt="" width={24} />
+							{errors.birth_date}
+						</div>
+
 					</div>
 				</div>
 
-				<div className="form-group">
+				<div className={`form-group ${errors.email && 'error'}`}>
 					<label htmlFor="email">Почта</label>
 					<input type="text" className="auth-input" id='email' placeholder='yourmail@gmail.com'
-						value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
+						value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })}
+					/>
+					<div className="message">
+						<img src={validation} alt="" width={24} />
+						{errors.email}
+					</div>
 				</div>
 
-				<div className="form-group">
+				<div className={`form-group ${errors.password && 'error'}`}>
 					<label htmlFor="password">Пароль</label>
 					<input type="password" className="auth-input" id='password' placeholder='10+ символов'
-						value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
+						value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })}
+					/>
+					<div className="message">
+						<img src={validation} alt="" width={24} />
+						{errors.password}
+					</div>
 				</div>
 
 				<div className="agreement">
@@ -114,7 +172,8 @@ function Register() {
 				</button>
 			</div>
 		</>
-	)
+	);
+
 }
 
 export default Register

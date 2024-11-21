@@ -187,12 +187,40 @@
 }
 
 .form-group {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	gap: 10px;
 	width: 100%;
 }
+
+.form-group .message {
+	position: absolute;
+	top: 90%;
+
+	color: #EF233C;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	opacity: 0;
+	transition: 0.3s;
+}
+
+.form-group.error .message {
+	top: 100%;
+	opacity: 1;
+}
+
+.form-group.error .auth-input::placeholder {
+	color: #EF233C;
+}
+
+/* .form-group.second {
+	justify-content: flex-start;
+} */
 
 .form-group label {
 	font-size: 20px;

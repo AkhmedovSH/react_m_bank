@@ -2,29 +2,44 @@ import React, { useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 
+import { httpOk, post } from 'configs/api';
+
 import logo from 'assets/icons/logo.svg'
 import check from 'assets/icons/check.svg'
+import validation from 'assets/icons/validation.svg'
+
 import { ReactComponent as ArrowLeft } from 'assets/icons/arrow_left.svg';
 import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
-import { httpOk, post } from 'configs/api';
 
 function Register() {
 	const navigate = useNavigate()
 
+	const [errors, setErrors] = useState({});
 	const [data, setData] = useState({
-		first_name: '',
-		last_name: '',
-		middle_name: '',
-		birhday: '',
 		email: '',
 		password: '',
 		agreement: false,
 	})
 
+	function validateFields() {
+		const newErrors = {};
+
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!data.email.trim() || !emailRegex.test(data.email)) newErrors.email = 'Некорректный email';
+
+		const passwordRegex = /.{10,}/;
+		if (!data.password.trim() || !passwordRegex.test(data.password)) newErrors.password = 'Пароль должен содержать 10+ символов';
+
+		setErrors(newErrors);
+		return Object.keys(newErrors).length === 0; 
+	}
+
 	async function login() {
+		if (!validateFields()) return;
+
 		const response = await post('/api/auth/login', data)
 		if (httpOk(response)) {
-			navigate('/auth/phone')
+			navigate(`/auth/phone?session_id=${response.data.session_id}`)
 		}
 	}
 
@@ -37,16 +52,26 @@ function Register() {
 					Вход в аккаунт
 				</div>
 
-				<div className="form-group">
+				<div className={`form-group ${errors.email && 'error'}`}>
 					<label htmlFor="email">Почта</label>
 					<input type="text" className="auth-input" id='email' placeholder='yourmail@gmail.com'
 						value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
+
+					<div className="message">
+						<img src={validation} alt="" width={24} />
+						{errors.email}
+					</div>
 				</div>
 
-				<div className="form-group">
+				<div className={`form-group ${errors.password && 'error'}`}>
 					<label htmlFor="password">Пароль</label>
 					<input type="password" className="auth-input" id='password' placeholder='10+ символов'
 						value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
+
+					<div className="message">
+						<img src={validation} alt="" width={24} />
+						{errors.password}
+					</div>
 				</div>
 
 				<div className="agreement">

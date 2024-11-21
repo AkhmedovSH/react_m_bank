@@ -74,8 +74,8 @@ body {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 
@@ -193,3 +193,34 @@ label.switch>input[type=checkbox]:checked+div.switch-btn {
 label.switch>input[type=checkbox]:checked+div.switch-btn:before {
 	left: 22px;
 }
+
+/* Toast */
+#root .Toastify__toast-theme--colored.Toastify__toast--error {
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.80);
+	backdrop-filter: blur(25px);
+	color: #EF233C;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--success {
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.80);
+	backdrop-filter: blur(25px);
+	color: #7fef23;
+}
+
+.Toastify__close-button {
+	display: none;
+}
+
+.Toastify__toast-container {
+	min-width: 320px;
+	max-width: 400px;
+	width: fit-content;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--success .Toastify__toast-icon {
+	display: none;
+}
+
+/* Toast end */

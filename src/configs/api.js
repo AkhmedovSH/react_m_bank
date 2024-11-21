@@ -8,7 +8,7 @@ var baseURL = 'https://mbank.imowww.uz';
 
 const axiosClient = axios.create({
     baseURL: baseURL,
-    withCredentials: true,
+    withCredentials: false,
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -17,7 +17,7 @@ const axiosClient = axios.create({
 
 const axiosFile = axios.create({
     baseURL: baseURL,
-    withCredentials: true,
+    withCredentials: false,
     headers: {
         'Content-Type': 'multipart/form-data',
         'Accept': 'application/json',
@@ -81,6 +81,9 @@ export async function post(url, payload = {}, settings = {}) {
             }
         )
     store.dispatch(hideLoader());
+    if (data.status === 200) {
+        toast.success(data.data.message)
+    }
 
     return data
 }
@@ -97,13 +100,13 @@ function httpStatusChecker(error) {
         return;
     }
     if (error?.response?.status === 401) {
-        if (process.env.NODE_ENV === 'production') {
-            window.location.href = "https://cabinet.mison.uz/auth/login";
-        } else {
-            window.location.href = "http://localhost:3007/auth/login";
-        }
+        // if (process.env.NODE_ENV === 'production') {
+        //     window.location.href = "https://cabinet.mison.uz/auth/login";
+        // } else {
+        //     window.location.href = "http://localhost:3007/auth/login";
+        // }
 
-        toast.error(i18n.t('login_or_password_invalid'))
+        toast.error(i18n.t('Неправильный логин или пароль'))
         return;
     }
     if (error?.response?.status === 404) {
