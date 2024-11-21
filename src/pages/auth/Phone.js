@@ -104,6 +104,14 @@ function RegisterPhone() {
 						]}
 						guide={false}
 						value={data.phone_number}
+						onClick={(e) => {
+							const inputElement = e.target;
+							if (inputElement.selectionStart < 5) {
+									setTimeout(() => {
+											inputElement.setSelectionRange(5, 5); 
+									}, 0);
+							}
+					}}			
 						onChange={(e) => {
 							const inputValue = e.target.value;
 							if (!inputValue.startsWith('+998')) {
@@ -115,6 +123,7 @@ function RegisterPhone() {
 								setData({ ...data, phone_number: inputValue });
 							}
 						}}
+						autoFocus
 					/>
 
 					<div className="message">
