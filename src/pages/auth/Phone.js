@@ -107,11 +107,23 @@ function RegisterPhone() {
 						onClick={(e) => {
 							const inputElement = e.target;
 							if (inputElement.selectionStart < 5) {
-									setTimeout(() => {
-											inputElement.setSelectionRange(5, 5); 
-									}, 0);
+								setTimeout(() => {
+									inputElement.setSelectionRange(5, 5);
+								}, 0);
 							}
-					}}			
+						}}
+						onKeyDown={(e) => {
+							const inputElement = e.target;
+							if (
+								e.key === 'ArrowLeft' &&
+								inputElement.selectionStart <= 5
+							) {
+								e.preventDefault();
+								setTimeout(() => {
+									inputElement.setSelectionRange(5, 5); 
+								}, 0);
+							}
+						}}
 						onChange={(e) => {
 							const inputValue = e.target.value;
 							if (!inputValue.startsWith('+998')) {
