@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import MaskedInput from 'react-text-mask'
 
-import { useNavigate  } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { httpOk, post } from 'configs/api'
 import { formatDateBackend } from 'configs/helper'
@@ -9,6 +9,9 @@ import { formatDateBackend } from 'configs/helper'
 import logo from 'assets/icons/logo.svg'
 import check from 'assets/icons/check.svg'
 import validation from 'assets/icons/validation.svg'
+import eye from 'assets/icons/eye.svg'
+import eye_closed from 'assets/icons/eye_closed.svg'
+
 import { ReactComponent as ArrowLeft } from 'assets/icons/arrow_left.svg';
 import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
 
@@ -24,6 +27,7 @@ function Register() {
 		email: '',
 		password: '',
 		agreement: false,
+		showPassword: false,
 	})
 
 	function validateFields() {
@@ -43,7 +47,7 @@ function Register() {
 		if (!data.birth_date.trim() || !dateRegex.test(data.birth_date)) newErrors.birth_date = 'Некорректная дата';
 
 		setErrors(newErrors);
-		return Object.keys(newErrors).length === 0; 
+		return Object.keys(newErrors).length === 0;
 	}
 
 
@@ -138,9 +142,20 @@ function Register() {
 
 				<div className={`form-group ${errors.password && 'error'}`}>
 					<label htmlFor="password">Пароль</label>
-					<input type="password" className="auth-input" id='password' placeholder='10+ символов'
-						value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })}
-					/>
+					<div className="position-relative">
+						<input type={data.showPassword ? "text" : "password"}
+							className="auth-input" id='password' placeholder='10+ символов'
+							value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
+
+						<div className="right-icon" onClick={() => setData({ ...data, showPassword: !data.showPassword })}>
+							{data.showPassword ?
+								<img src={eye} alt="" />
+								:
+								<img src={eye_closed} alt="" />
+							}
+						</div>
+					</div>
+
 					<div className="message">
 						<img src={validation} alt="" width={24} />
 						{errors.password}
