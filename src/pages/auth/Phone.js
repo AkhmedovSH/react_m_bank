@@ -32,7 +32,7 @@ function RegisterPhone() {
 		const newErrors = {};
 		const phoneRegex = /^\+998 \d{2} \d{3} \d{2} \d{2}$/;
 		if (!phoneRegex.test(data.phone_number)) {
-			newErrors.phone_number = 'Некорректный номер телефона (формат: +998 XX XXX XX XX)';
+			newErrors.phone_number = 'Некорректный номер телефона';
 		}
 
 		setErrors(newErrors);
@@ -59,7 +59,7 @@ function RegisterPhone() {
 			phone_number: '+' + unMaskPhoneNumber(data.phone_number),
 		};
 
-		const response = await post(`/api/auth/${urlPrefix}-phone`, sendData, { guest: true })
+		const response = await post(`/api/auth/register-phone`, sendData, { guest: true })
 		if (httpOk(response)) {
 			if (otpCodeInputRef.current) {
 				otpCodeInputRef.current.focus();
@@ -76,7 +76,7 @@ function RegisterPhone() {
 			otp_code: data.otp_code.replace(/\s/g, ''),
 		};
 
-		const response = await post(`/api/auth/${urlPrefix}-verify/`, sendData, { guest: true })
+		const response = await post(`/api/auth/register-verify/`, sendData, { guest: true })
 		if (httpOk(response)) {
 			localStorage.setItem('token', response.data.access_token)
 			navigate('/auth/complete')
