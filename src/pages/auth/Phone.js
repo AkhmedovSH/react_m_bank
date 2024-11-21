@@ -56,13 +56,13 @@ function RegisterPhone() {
 
 		const sendData = {
 			...data,
-			phone_number: '+' + unMaskPhoneNumber(data.phone_number),
+			phone_number: unMaskPhoneNumber(data.phone_number).replace('+998', ''),
 		};
 
 		const response = await post(`/api/auth/${urlPrefix}-phone/`, sendData, { guest: true })
 		if (httpOk(response)) {
 			if (otpCodeInputRef.current) {
-				otpCodeInputRef.current.focus();
+				otpCodeInputRef?.current?.focus();
 			}
 		}
 	}
@@ -72,7 +72,7 @@ function RegisterPhone() {
 
 		const sendData = {
 			...data,
-			phone_number: unMaskPhoneNumber(data.phone_number),
+			phone_number: unMaskPhoneNumber(data.phone_number).replace('+998', ''),
 			otp_code: data.otp_code.replace(/\s/g, ''),
 		};
 
@@ -120,7 +120,7 @@ function RegisterPhone() {
 							) {
 								e.preventDefault();
 								setTimeout(() => {
-									inputElement.setSelectionRange(5, 5); 
+									inputElement.setSelectionRange(5, 5);
 								}, 0);
 							}
 						}}
