@@ -59,7 +59,7 @@ function RegisterPhone() {
 			phone_number: '+' + unMaskPhoneNumber(data.phone_number),
 		};
 
-		const response = await post(`/api/auth/register-phone`, sendData, { guest: true })
+		const response = await post(`/api/auth/${urlPrefix}-phone`, sendData, { guest: true })
 		if (httpOk(response)) {
 			if (otpCodeInputRef.current) {
 				otpCodeInputRef.current.focus();
@@ -76,7 +76,7 @@ function RegisterPhone() {
 			otp_code: data.otp_code.replace(/\s/g, ''),
 		};
 
-		const response = await post(`/api/auth/register-verify/`, sendData, { guest: true })
+		const response = await post(`/api/auth/${urlPrefix}-verify/`, sendData, { guest: true })
 		if (httpOk(response)) {
 			localStorage.setItem('token', response.data.access_token)
 			navigate('/auth/complete')
@@ -126,8 +126,8 @@ function RegisterPhone() {
 
 				<div className="auth-group">
 					<div className="form-group">
-						<label htmlFor="email">Получить СМС</label>
-						<button className="auth-btn dark start second" onClick={() => sendCode()}>
+						<label>Получить СМС</label>
+						<button className="auth-btn dark start second" type='button' onClick={() => sendCode()}>
 							Отправить код
 						</button>
 					</div>
