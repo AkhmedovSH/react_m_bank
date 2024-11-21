@@ -63,7 +63,7 @@ function Dashboard({ setActiveTab }) {
             return () => {
                 document.removeEventListener("mousedown", handleClickOutside);
             };
-        }, [ref]);
+        }, [ref]); // eslint-disable-line react-hooks/exhaustive-deps
     }
 
     const [areaChart] = useState({
