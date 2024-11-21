@@ -12,9 +12,9 @@ function Transations() {
 	const [showMenu, setShowMenu] = useState(false)
 	const [showMenu2, setShowMenu2] = useState(false)
 
-	const [data, setData] = useState({
+	// const [data, setData] = useState({
 
-	})
+	// })
 
 	return (
 		<>

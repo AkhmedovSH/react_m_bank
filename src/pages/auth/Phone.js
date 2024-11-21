@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import MaskedInput from 'react-text-mask'
 
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import { httpOk, post } from 'configs/api';
 import { unMaskPhoneNumber } from 'configs/helper';
@@ -17,7 +17,7 @@ function RegisterPhone() {
 	const otpCodeInputRef = useRef(null); // Создаем реф для input
 
 	const [searchParams] = useSearchParams();
-	const urlPrefix = localStorage.getItem('isRegister') == 'false' ? 'login' : 'register'
+	const urlPrefix = localStorage.getItem('isRegister') === 'false' ? 'login' : 'register'
 
 
 	const [errors, setErrors] = useState({});
@@ -25,6 +25,7 @@ function RegisterPhone() {
 		phone_number: '+998',
 		otp_code: '',
 		session_id: searchParams.get('session_id'),
+		login_session_id: searchParams.get('login_session_id'),
 	})
 
 	const validateSendCode = () => {

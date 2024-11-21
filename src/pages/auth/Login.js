@@ -39,7 +39,7 @@ function Register() {
 
 		const response = await post('/api/auth/login', data)
 		if (httpOk(response)) {
-			navigate(`/auth/phone?session_id=${response.data.session_id}`)
+			navigate(`/auth/phone?login_session_id=${response.data.login_session_id}`)
 		}
 	}
 

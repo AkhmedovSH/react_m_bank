@@ -15,23 +15,23 @@ const axiosClient = axios.create({
     },
 });
 
-const axiosFile = axios.create({
-    baseURL: baseURL,
-    withCredentials: false,
-    headers: {
-        'Content-Type': 'multipart/form-data',
-        'Accept': 'application/json',
-        "withCredentials": true,
-    },
-});
+// const axiosFile = axios.create({
+//     baseURL: baseURL,
+//     withCredentials: false,
+//     headers: {
+//         'Content-Type': 'multipart/form-data',
+//         'Accept': 'application/json',
+//         "withCredentials": true,
+//     },
+// });
 
-const axiosFileDownload = axios.create({
-    baseURL: baseURL,
-    withCredentials: true,
-    headers: {
-        "withCredentials": true,
-    },
-});
+// const axiosFileDownload = axios.create({
+//     baseURL: baseURL,
+//     withCredentials: true,
+//     headers: {
+//         "withCredentials": true,
+//     },
+// });
 
 export async function get(url, payload = {}, settings = {}) {
     var params = "";
