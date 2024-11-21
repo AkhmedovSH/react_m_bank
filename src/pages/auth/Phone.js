@@ -59,7 +59,7 @@ function RegisterPhone() {
 			phone_number: '+' + unMaskPhoneNumber(data.phone_number),
 		};
 
-		const response = await post(`/api/auth/${urlPrefix}-phone`, sendData, { guest: true })
+		const response = await post(`/api/auth/${urlPrefix}-phone/`, sendData, { guest: true })
 		if (httpOk(response)) {
 			if (otpCodeInputRef.current) {
 				otpCodeInputRef.current.focus();
