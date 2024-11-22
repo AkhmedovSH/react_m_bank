@@ -1,11 +1,32 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
+import { Link, useNavigate } from 'react-router-dom';
 
-import logout from 'assets/icons/logout.svg';
+import logoutIcon from 'assets/icons/logout.svg';
 import { ReactComponent as Checkbox } from 'assets/icons/checkbox.svg';
 import { ReactComponent as CheckboxActive } from 'assets/icons/checkbox_active.svg';
 import { ReactComponent as ArrowRight } from 'assets/icons/arrow_right.svg';
 
 function Profile() {
+    const navigate = useNavigate()
+    const { i18n, t } = useTranslation()
+
+    async function logout() {
+        navigate('/auth/welcome')
+    }
+
+    function changeLanguage(language = 'uz') {
+        i18n.changeLanguage(language);
+
+        if (language === 'ru') {
+            localStorage.setItem('lang', 'ru');
+        }
+        if (language === 'uz') {
+            localStorage.setItem('lang', 'uz');
+        }
+    };
+
+
     return (
         <>
             <div className="profile-card wave-animation">
@@ -35,7 +56,7 @@ function Profile() {
                 </div>
             </div>
 
-            <div className="profile-card second wave-animation">
+            <Link className="profile-card second wave-animation" to="https://my.gov.uz/ru" target='_blank'>
                 <div>
                     Полная информация
                 </div>
@@ -43,7 +64,7 @@ function Profile() {
                     MyGov
                     <ArrowRight />
                 </div>
-            </div>
+            </Link>
 
             <div className="dashboard-title-03 wave-animation">
                 Настройки сайта
@@ -51,16 +72,24 @@ function Profile() {
 
             <div className="row wave-animation">
                 <div className="col-md-6">
-                    <div className="language-block">
-                        <CheckboxActive />
+                    <div className="language-block" onClick={() => changeLanguage('ru')}>
+                        {i18n.language === 'ru' ?
+                            <CheckboxActive />
+                            :
+                            <Checkbox />
+                        }
 
                         Русский
                     </div>
                 </div>
 
                 <div className="col-md-6">
-                    <div className="language-block">
-                        <Checkbox />
+                    <div className="language-block" onClick={() => changeLanguage('uz')}>
+                        {i18n.language === 'uz' ?
+                            <CheckboxActive />
+                            :
+                            <Checkbox />
+                        }
 
                         O’zbekcha
                     </div>
@@ -80,12 +109,12 @@ function Profile() {
                 </div>
             </div>
 
-            <div className="profile-card wave-animation">
+            <div className="profile-card wave-animation cursor" onClick={() => logout()}>
                 <div className="text-danger">
                     Выйти из аккаунта
                 </div>
                 <div>
-                    <img src={logout} alt="" width={24} />
+                    <img src={logoutIcon} alt="" width={24} />
                 </div>
             </div>
         </>

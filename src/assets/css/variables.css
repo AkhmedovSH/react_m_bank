@@ -194,6 +194,10 @@ label.switch>input[type=checkbox]:checked+div.switch-btn:before {
 	left: 22px;
 }
 
+.cursor {
+	cursor: pointer;
+}
+
 /* Toast */
 #root .Toastify__toast-theme--colored.Toastify__toast--error {
 	border-radius: 20px;
