@@ -55,7 +55,7 @@ function FirstWelcome() {
                             <ArrowRightIcon />
                         </button>
 
-                        <div className="background-image">
+                        <div className="background-image third">
                             <img src={first_2} alt="" />
                         </div>
                     </motion.div>
@@ -134,7 +134,7 @@ function FirstWelcome() {
                             <source src={video_4} type="video/mp4" />
                         </video>
 
-                        <div className="background-image">
+                        <div className="background-image fourth">
                             <img src={first_4} alt="" />
                         </div>
 

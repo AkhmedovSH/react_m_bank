@@ -502,6 +502,16 @@
 	height: 50%;
 	position: absolute;
 	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.background-image.third {
+align-items: flex-end;
+}
+
+.background-image.fourth {
+	align-items: flex-start;
 }
 
 .first-welcome-1 {
