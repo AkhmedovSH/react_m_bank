@@ -1,15 +1,19 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import logoutIcon from 'assets/icons/logout.svg';
 import { ReactComponent as Checkbox } from 'assets/icons/checkbox.svg';
 import { ReactComponent as CheckboxActive } from 'assets/icons/checkbox_active.svg';
 import { ReactComponent as ArrowRight } from 'assets/icons/arrow_right.svg';
+import { formatPhone } from 'configs/helper';
 
 function Profile() {
     const navigate = useNavigate()
     const { i18n, t } = useTranslation()
+
+    const reduxAccount = useSelector(state => state.account)
 
     async function logout() {
         navigate('/auth/welcome')
@@ -31,34 +35,34 @@ function Profile() {
         <>
             <div className="profile-card wave-animation">
                 <div>
-                    Телефон
+                    {t('phone')}
                 </div>
                 <div>
-                    +998 97 737 0131
-                </div>
-            </div>
-
-            <div className="profile-card wave-animation">
-                <div>
-                    Почта
-                </div>
-                <div>
-                    kamronislamov.c@gmail.com
+                    {formatPhone(reduxAccount.phone_number)}
                 </div>
             </div>
 
             <div className="profile-card wave-animation">
                 <div>
-                    Форма организации
+                    {t('email')}
                 </div>
                 <div>
-                    ИП
+                    {reduxAccount.email}
+                </div>
+            </div>
+
+            <div className="profile-card wave-animation">
+                <div>
+                    {t('organization_form')}
+                </div>
+                <div>
+                    {t('ip')}
                 </div>
             </div>
 
             <Link className="profile-card second wave-animation" to="https://my.gov.uz/ru" target='_blank'>
                 <div>
-                    Полная информация
+                    {t('full_info')}
                 </div>
                 <div className="d-flex gap-10">
                     MyGov
@@ -67,7 +71,7 @@ function Profile() {
             </Link>
 
             <div className="dashboard-title-03 wave-animation">
-                Настройки сайта
+                {t('site_settings')}
             </div>
 
             <div className="row wave-animation">
@@ -79,7 +83,7 @@ function Profile() {
                             <Checkbox />
                         }
 
-                        Русский
+                        {t('russian')}
                     </div>
                 </div>
 
@@ -91,14 +95,14 @@ function Profile() {
                             <Checkbox />
                         }
 
-                        O’zbekcha
+                        {t('uzbek')}
                     </div>
                 </div>
             </div>
 
             <div className="profile-card wave-animation">
                 <div>
-                    Звук уведомлений
+                    {t('notification_sound')}
                 </div>
                 <div>
                     <label className="switch">
@@ -111,7 +115,7 @@ function Profile() {
 
             <div className="profile-card wave-animation cursor" onClick={() => logout()}>
                 <div className="text-danger">
-                    Выйти из аккаунта
+                    {t('logout')}
                 </div>
                 <div>
                     <img src={logoutIcon} alt="" width={24} />

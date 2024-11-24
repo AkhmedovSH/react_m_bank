@@ -20,49 +20,49 @@ function Index() {
 			<div className="auth-content align-items-center">
 
 				<div className="row row-gap-10">
-					<div className="col-md-4">
+					<Link className="col-md-4" to="/auth/activity/success">
 						<div className="activity-card second">
 							<img src={activity_1} alt="" />
 							Wildberries
 						</div>
-					</div>
+					</Link>
 
-					<div className="col-md-4">
+					<Link className="col-md-4" to="/auth/activity/success">
 						<div className="activity-card second">
 							<img src={activity_2} alt="" />
 							UZUM Market
 						</div>
-					</div>
+					</Link>
 
-					<div className="col-md-4">
+					<Link className="col-md-4" to="/auth/activity/success">
 						<div className="activity-card second">
 							<img src={activity_3} alt="" />
 							Ozon
 						</div>
-					</div>
+					</Link>
 
-					<div className="col-md-6">
+					<Link className="col-md-6" to="/auth/activity/success">
 						<div className="activity-card second">
 							<img src={activity_4} alt="" />
 							ZoodMall
 						</div>
-					</div>
+					</Link>
 
-					<div className="col-md-6">
+					<Link className="col-md-6" to="/auth/activity/success">
 						<div className="activity-card second">
 							<img src={activity_5} alt="" />
 							Sello
 						</div>
-					</div>
+					</Link>
 				</div>
 
-				<div className="auth-buttons">
+				{/* <div className="auth-buttons">
 					<Link className="auth-btn start" to="/auth/activity/success">
 						Продолжить
 						<div className="devider" />
 						<ArrowRightIcon />
 					</Link>
-				</div>
+				</div> */}
 			</div>
 
 			<div></div>

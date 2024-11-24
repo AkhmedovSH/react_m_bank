@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { handleFocus } from 'configs/helper'
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { handleFocus } from 'configs/helper';
 
 import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
 import { ReactComponent as MenuArrow } from 'assets/icons/menu_arrow.svg';
@@ -7,30 +8,26 @@ import { ReactComponent as MenuArrow } from 'assets/icons/menu_arrow.svg';
 import { ReactComponent as TransationBtn1 } from 'assets/icons/dashboard_button_2.svg';
 import { ReactComponent as TransationBtn2 } from 'assets/icons/transaction.svg';
 
-
 function Transations() {
-	const [showMenu, setShowMenu] = useState(false)
-	const [showMenu2, setShowMenu2] = useState(false)
-
-	// const [data, setData] = useState({
-
-	// })
+	const { t } = useTranslation();
+	const [showMenu, setShowMenu] = useState(false);
+	const [showMenu2, setShowMenu2] = useState(false);
 
 	return (
 		<>
 			<div className="d-flex gap-10 wave-animation">
 				<button className="transation-btn">
 					<TransationBtn1 />
-					Заплатить по фото
+					{t('pay_by_photo')}
 				</button>
 				<button className="transation-btn">
 					<TransationBtn2 />
-					По документу
+					{t('by_document')}
 				</button>
 			</div>
 
 			<div className="dashboard-title-02 wave-animation">
-				Отправитель
+				{t('sender')}
 			</div>
 
 			<div className="transaction-gradient-card wave-animation">
@@ -49,32 +46,30 @@ function Transations() {
 						<input type="date" />
 					</div>
 					<div className="transaction-description">
-						Выберите дату исполнения платежа в списке <br />
-						или укажите свою.
+						{t('select_payment_date')}
 					</div>
 				</div>
 
 				<div className="col-md-6">
 					<div className="transation-input second">
 						<div className="transation-input-left">
-							Номер платежа
+							{t('payment_number')}
 						</div>
 						<input type="number" onFocus={(e) => handleFocus(e)} />
 					</div>
 					<div className="transaction-description">
-						Номер платежа сгенерирован автоматически. Вы можете <br />
-						изменить его, нажав на поле ввода.
+						{t('payment_number_info')}
 					</div>
 				</div>
 			</div>
 
 			<div className="dashboard-title-02 wave-animation">
-				Получатель
+				{t('recipient')}
 			</div>
 
 			<div className="wave-animation">
 				<div className="transation-input">
-					<input type="text" placeholder="МФО Банка" />
+					<input type="text" placeholder={t('bank_mfo')} />
 					<MenuArrow className="right-icon" onClick={() => setShowMenu(!showMenu)} />
 
 					<div className={`transaction-menu ${showMenu ? 'active' : ''}`}>
@@ -101,26 +96,26 @@ function Transations() {
 					</div>
 				</div>
 				<div className="transation-input">
-					<input type="text" placeholder="Счет получателя" />
+					<input type="text" placeholder={t('recipient_account')} />
 				</div>
 				<div className="transation-input">
-					<input type="text" placeholder="ИНН" />
+					<input type="text" placeholder={t('inn')} />
 				</div>
 				<div className="transation-input">
-					<input type="text" placeholder="Наименоавние организации" />
+					<input type="text" placeholder={t('organization_name')} />
 				</div>
 			</div>
 
 			<div className="dashboard-title-02 wave-animation">
-				Описание платежа
+				{t('payment_description')}
 			</div>
 
 			<div className="wave-animation">
 				<div className="transation-input">
-					<input type="text" placeholder="Сумма платежа" />
+					<input type="text" placeholder={t('payment_amount')} />
 				</div>
 				<div className="transation-input">
-					<input type="text" placeholder="Код назначения платежа" />
+					<input type="text" placeholder={t('payment_code')} />
 					<MenuArrow className="right-icon" onClick={() => setShowMenu2(!showMenu2)} />
 
 					<div className={`transaction-menu ${showMenu2 ? 'active' : ''}`}>
@@ -141,20 +136,19 @@ function Transations() {
 							<div>1000005</div>
 						</div>
 					</div>
-
 				</div>
 				<div className="transation-input">
-					<input type="text" placeholder="Назначение платежа" />
+					<input type="text" placeholder={t('payment_purpose')} />
 				</div>
 			</div>
 
 			<div className="auth-btn second start primary-hover">
-				Оплатить
+				{t('pay')}
 				<div className="devider" />
 				<ArrowRightIcon />
 			</div>
 		</>
-	)
+	);
 }
 
-export default Transations
+export default Transations;

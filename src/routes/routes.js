@@ -11,6 +11,11 @@ import Login from 'pages/auth/Login'
 import OpenAccountIndex from 'pages/auth/open_account/Index'
 import OpenAccountSuccess from 'pages/auth/open_account/Success'
 import OpenAccountError from 'pages/auth/open_account/Error'
+import OpenAccountCurrencies from 'pages/auth/open_account/Currencies'
+import OpenAccountRegister from 'pages/auth/open_account/Register'
+import OpenAccountRegister2 from 'pages/auth/open_account/Register2'
+import OpenAccountRegister3 from 'pages/auth/open_account/Register3'
+import OpenAccountRegister4 from 'pages/auth/open_account/Register4'
 
 import OpenCompanyIndex from 'pages/auth/open_company/Index'
 import OpenCompanyOperator from 'pages/auth/open_company/Operator'
@@ -43,11 +48,16 @@ const authRoutes = [
 	{ path: "/auth/open-account", component: <OpenAccountIndex /> },
 	{ path: "/auth/open-account/success", component: <OpenAccountSuccess /> },
 	{ path: "/auth/open-account/error", component: <OpenAccountError /> },
+	{ path: "/auth/open-account/currencies", component: <OpenAccountCurrencies /> },
+	{ path: "/auth/open-account/register", component: <OpenAccountRegister /> },
+	{ path: "/auth/open-account/register2", component: <OpenAccountRegister2 /> },
+	{ path: "/auth/open-account/register3", component: <OpenAccountRegister3 /> },
+	{ path: "/auth/open-account/register4", component: <OpenAccountRegister4 /> },
+
 
 	{ path: "/auth/open-company", component: <OpenCompanyIndex /> },
 	{ path: "/auth/open-company/operator", component: <OpenCompanyOperator /> },
 	{ path: "/auth/open-company/add-company", component: <OpenCompanyAddCompany /> },
-
 
 	{ path: "/auth/open-company", component: <OpenCompanyIndex /> },
 	{ path: "/auth/open-company/operator", component: <OpenCompanyOperator /> },

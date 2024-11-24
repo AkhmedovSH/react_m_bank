@@ -25,7 +25,7 @@ function Operator() {
 						<ArrowLeft />
 					</button>
 
-					<Link className="auth-btn" to="/auth/open-account/success">
+					<Link className="auth-btn" to="https://my.gov.uz/ru" target='_blank'>
 						Перейти в MyGov
 						<div className="devider" />
 						<ArrowRightIcon />

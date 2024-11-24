@@ -33,6 +33,27 @@ const axiosClient = axios.create({
 //     },
 // });
 
+async function checkToken() {
+    var tokenTime = localStorage.getItem('tokenTime');
+    var difference = Math.floor(((Date.now() - tokenTime) / 1000) / 60);
+    if (difference < 25) {
+        return
+    } else {
+        const refresh_token = localStorage.getItem('refresh_token')
+        if (!refresh_token) {
+            return;
+        }
+        await axiosClient.post('/api/auth/refresh/', { refresh_token: refresh_token }).then(response => {
+            localStorage.setItem('token', response.data.access_token)
+            localStorage.setItem('refresh_token', response.data.refresh_token)
+            localStorage.setItem("tokenTime", JSON.stringify(new Date().getTime()));
+        }).catch(error => {
+            httpStatusChecker(error)
+        })
+        return
+    }
+}
+
 export async function get(url, payload = {}, settings = {}) {
     var params = "";
     if (Object.entries(payload).length > 0) {
@@ -40,6 +61,7 @@ export async function get(url, payload = {}, settings = {}) {
     }
 
     if (settings.loader) store.dispatch(showLoader());
+    if (!settings.guest) await checkToken();
 
     const data = await axiosClient.get(
         url + params,
@@ -63,6 +85,7 @@ export async function get(url, payload = {}, settings = {}) {
 
 export async function post(url, payload = {}, settings = {}) {
     if (settings.loader) store.dispatch(showLoader());
+    if (!settings.guest) await checkToken();
 
     const data = await axiosClient.post(
         url,

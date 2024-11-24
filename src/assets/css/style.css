@@ -125,8 +125,8 @@
 	color: rgba(16, 25, 58, 0.10);
 }
 
-.dashboard-eye {
-	color: rgba(16, 25, 58, 0.10);
+.dashboard-eye path {
+	fill: rgba(16, 25, 58, 0.10);
 }
 
 
@@ -203,7 +203,7 @@
 .dashboard-history-tab {
 	flex: 0 0 auto;
 	/* предотвращает сжатие табов */
-	width: 115px;
+	min-width: 115px;
 	min-height: 45px;
 	padding: 15px;
 
@@ -372,7 +372,7 @@
 .bottom-bar-tabs {
 	width: fit-content;
 	padding: 15px;
-	border-radius: 70px; 
+	border-radius: 70px;
 	border: 1px solid #E3DFFF;
 	background: #FFF;
 	backdrop-filter: blur(25px);
@@ -640,4 +640,41 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+}
+
+.currency-card {
+	min-width: 100px;
+	width: 100px;
+	height: 100px;
+
+	padding: 15px;
+	border-radius: 20px;
+	border: 1px solid var(--border-color);
+	background: #FFF;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.currency-card.active {
+	border: 1px solid #5C07FF;
+}
+
+.currency-card img {
+	width: 30px;
+	height: 30px;
+}
+
+.currency-card.second {
+	width: 100%;
+	min-height: 80px;
+	padding: 15px;
+	border-radius: 20px;
+	border: 1px solid  rgba(16, 25, 58, 0.10);
+	background: radial-gradient(166.35% 111.8% at 100% 0%, rgba(214, 193, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%), #FFF;
+}
+
+.currency-card-price {
+	font-size: 26px;
 }

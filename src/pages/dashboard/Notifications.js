@@ -1,27 +1,31 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
 function Notifications() {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="dashboard-title-03 wave-animation">
-        Уведомления
+        {t('notifications')}
       </div>
 
       <div className="notification wave-animation">
         <div className="notification-title">
-          Скоро конец месяца и время уплаты налогов
+          {t('end_of_month_and_tax_payment')}
         </div>
         <div className="notification-description">
-          Скоро конец месяца, и это значит, что пора платить налоги. Каждый год граждане и предприятия должны выполнять свои налоговые обязательства. Это важный процесс, который финансирует общественные услуги, такие как образование и здравоохранение. Не забудьте подготовить документы и проверить расчеты, чтобы избежать проблем.
+          {t('tax_payment_description')}
         </div>
       </div>
 
       <div className="notification wave-animation">
         <div className="notification-title">
-          Выплата зарплат
+          {t('salary_payment')}
         </div>
         <div className="notification-description">
-          Конец месяца уже на подходе, и это значит, что пора радовать своих сотрудников зарплатой! Не забывайте, что своевременные выплаты — это не только закон, но и способ поддержать командный дух. Убедитесь, что все расчеты верны, чтобы ваши коллеги могли с радостью встретить новый месяц!        </div>
+          {t('salary_payment_description')}
+        </div>
       </div>
     </>
   )

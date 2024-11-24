@@ -22,7 +22,7 @@ function Index() {
 						<ArrowLeft />
 					</button>
 
-					<Link className="auth-btn second rounded" to="/auth/open-company/add-company">
+					<Link className="auth-btn second rounded" to="/auth/eds">
 						Есть
 					</Link>
 

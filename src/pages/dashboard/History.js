@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import search from 'assets/icons/search.svg';
 
@@ -6,32 +7,33 @@ import history_1 from 'assets/images/history_1.png';
 import history_2 from 'assets/images/history_2.png';
 
 function History() {
+    const { t } = useTranslation();
+
     const historyTabs = [
         {
             id: 1,
-            name: 'Все операции'
+            name: t('all_transactions')
         },
         {
             id: 2,
-            name: 'Исходящие '
+            name: t('outgoing')
         },
         {
             id: 3,
-            name: 'Входящие'
+            name: t('incoming')
         },
         {
             id: 4,
-            name: 'На подпись'
+            name: t('pending_signature')
         },
-    ]
+    ];
 
-    const [activeHistoryTab, setActiveHistoryTab] = useState(1)
-
+    const [activeHistoryTab, setActiveHistoryTab] = useState(1);
 
     return (
         <>
             <div className="dashboard-title-02 wave-animation">
-                История
+                {t('history')}
             </div>
 
             <div className="dashboard-history-tabs wave-animation">
@@ -46,92 +48,95 @@ function History() {
             <div className="dashboard-history wave-animation">
                 <div className="dashboard-history-filter">
                     <div className="dashboard-history-search">
-                        <input type="text" placeholder="Поиск..." />
+                        <input type="text" placeholder={t('search')} />
                         <img src={search} alt="" className="icon" />
                     </div>
                 </div>
 
                 <div className="dashboard-history-date">
-                    Сегодня, 23 октября
+                    {t('today')}, 23 октября
                 </div>
                 <div className="dashboard-history-card">
                     <img src={history_1} alt="Xeond" />
                     <div className="dashboard-history-card-content">
                         <div className="dashboard-history-card-title">
-                            OOO, XEOND
+                            {t('ooo,_xeond')}
                         </div>
                         <div className="dashboard-history-card-description">
-                            Транзакция для оплаты дизайна от компании OOO Xeond была проведена 23 октября 2024 года в 14:30 по Ташкентскому времени. НДС входит в стоимость.
+                            {t('transaction_for_design_payment_from_company_ooo_xeond_was_processed_on_october_23,_2024,_at_14:30_tashkent_time._vat_included_in_price')}
                         </div>
                         <div className="dashboard-history-card-subtitle">
-                            Транзакция №133
+                            {t('transaction')} №133
                         </div>
                     </div>
 
                     <div className="dashboard-history-card-right">
                         <div className="dashboard-history-card-balance">
-                            -11.450.000 сум
+                            -11.450.000 {t('sum')}
                         </div>
                         <div className="dashboard-history-card-status">
-                            Успешная операция
+                            {t('successful_transaction')}
                         </div>
                         <div className="dashboard-history-card-card_number">
-                            Карта **** 9934
+                            {t('card')} **** 9934
                         </div>
                     </div>
                 </div>
+
                 <div className="dashboard-history-card">
                     <img src={history_2} alt="Xeond" />
                     <div className="dashboard-history-card-content">
                         <div className="dashboard-history-card-title">
-                            OOO, FORMOFVISUAL
+                            {t('ooo,_formofvisual')}
                         </div>
                         <div className="dashboard-history-card-description">
-                            Оплата моушен видео от компании OOO formofvisual была проведена 23 октября 2024 года в 11:10 по Ташкентскому времени. НДС входит в стоимость.                                </div>
+                            {t('payment_for_motion_video_from_company_ooo_formofvisual_was_processed_on_october_23,_2024,_at_11:10_tashkent_time._vat_included_in_price')}
+                        </div>
                         <div className="dashboard-history-card-subtitle">
-                            Транзакция №132
+                            {t('transaction')} №132
                         </div>
                     </div>
 
                     <div className="dashboard-history-card-right">
                         <div className="dashboard-history-card-balance">
-                            -3.000.000 сум
+                            -3.000.000 {t('sum')}
                         </div>
                         <div className="dashboard-history-card-status">
-                            Успешная операция
+                            {t('successful_transaction')}
                         </div>
                         <div className="dashboard-history-card-card_number">
-                            Карта **** 9934
+                            {t('card')} **** 9934
                         </div>
                     </div>
                 </div>
 
                 <div className="dashboard-history-date">
-                    Три дня назад, 20 октября
+                    {t('three_days_ago')}, 20 октября
                 </div>
 
                 <div className="dashboard-history-card">
                     <img src={history_2} alt="Xeond" />
                     <div className="dashboard-history-card-content">
                         <div className="dashboard-history-card-title">
-                            OOO, FORMOFVISUAL
+                            {t('ooo,_formofvisual')}
                         </div>
                         <div className="dashboard-history-card-description">
-                            Оплата моушен видео от компании OOO formofvisual была проведена 23 октября 2024 года в 11:10 по Ташкентскому времени. НДС входит в стоимость.                                </div>
+                            {t('payment_for_motion_video_from_company_ooo_formofvisual_was_processed_on_october_23,_2024,_at_11:10_tashkent_time._vat_included_in_price')}
+                        </div>
                         <div className="dashboard-history-card-subtitle">
-                            Транзакция №132
+                            {t('transaction')} №132
                         </div>
                     </div>
 
                     <div className="dashboard-history-card-right">
                         <div className="dashboard-history-card-balance">
-                            -3.000.000 сум
+                            -3.000.000 {t('sum')}
                         </div>
                         <div className="dashboard-history-card-status">
-                            Успешная операция
+                            {t('successful_transaction')}
                         </div>
                         <div className="dashboard-history-card-card_number">
-                            Карта **** 9934
+                            {t('card')} **** 9934
                         </div>
                     </div>
                 </div>
@@ -140,32 +145,31 @@ function History() {
                     <img src={history_1} alt="Xeond" />
                     <div className="dashboard-history-card-content">
                         <div className="dashboard-history-card-title">
-                            OOO, XEOND
+                            {t('ooo,_xeond')}
                         </div>
                         <div className="dashboard-history-card-description">
-                            Транзакция для оплаты дизайна от компании OOO Xeond была проведена 23 октября 2024 года в 14:30 по Ташкентскому времени. НДС входит в стоимость.
+                            {t('transaction_for_design_payment_from_company_ooo_xeond_was_processed_on_october_23,_2024,_at_14:30_tashkent_time._vat_included_in_price')}
                         </div>
                         <div className="dashboard-history-card-subtitle">
-                            Транзакция №133
+                            {t('transaction')} №133
                         </div>
                     </div>
 
                     <div className="dashboard-history-card-right">
                         <div className="dashboard-history-card-balance">
-                            -11.450.000 сум
+                            -11.450.000 {t('sum')}
                         </div>
                         <div className="dashboard-history-card-status">
-                            Успешная операция
+                            {t('successful_transaction')}
                         </div>
                         <div className="dashboard-history-card-card_number">
-                            Карта **** 9934
+                            {t('card')} **** 9934
                         </div>
                     </div>
                 </div>
-
             </div>
         </>
-    )
+    );
 }
 
-export default History
+export default History;

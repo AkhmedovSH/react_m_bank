@@ -79,6 +79,8 @@ function RegisterPhone() {
 		const response = await post(`/api/auth/${urlPrefix}-verify/`, sendData, { guest: true })
 		if (httpOk(response)) {
 			localStorage.setItem('token', response.data.access_token)
+			localStorage.setItem('refresh_token', response.data.refresh_token)
+			localStorage.setItem("tokenTime", JSON.stringify(new Date().getTime()));
 			navigate('/auth/complete')
 		}
 	}

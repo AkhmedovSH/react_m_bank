@@ -16,7 +16,7 @@ import complete_register_2 from 'assets/icons/complete_register_2.svg';
 import complete_register_3 from 'assets/icons/complete_register_3.svg';
 import complete_register_4 from 'assets/icons/complete_register_4.svg';
 
-// import { ReactComponent as Eye } from 'assets/icons/eye.svg';
+import { ReactComponent as Eye } from 'assets/icons/eye.svg';
 import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
 import { ReactComponent as ArrowRight } from 'assets/icons/arrow_right.svg';
 import { ReactComponent as DashboardButton1 } from 'assets/icons/dashboard_button_1.svg';
@@ -25,6 +25,7 @@ import { ReactComponent as DashboardButton2 } from 'assets/icons/dashboard_butto
 import history_1 from 'assets/images/history_1.png';
 import history_2 from 'assets/images/history_2.png';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const data = [5000000, 4000000, 4000000, 5000000, 8000000, 8200000, 6000000, 7200000, 6500000, 7200000, 8000000, 5000000];
 const labels = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
@@ -37,6 +38,8 @@ function Dashboard({ setActiveTab }) {
     useOutsideAlerter(menuRef, 1);
     useOutsideAlerter(menuRef2, 2);
     useOutsideAlerter(menuRef3, 3);
+
+    const reduxAccount = useSelector(state => state.account)
 
     const [activeHistoryTab, setActiveHistoryTab] = useState(1)
     const [showMenu, setShowMenu] = useState(false)
@@ -168,25 +171,37 @@ function Dashboard({ setActiveTab }) {
         <>
             <div className="row wave-animation">
                 <div className="col-md-6">
-                    <div className="dashboard-card-02">
+                    <div className="dashboard-card-02" >
                         <div className="d-flex justify-content-between">
                             <span className="dashboard-card-02-title">
                                 Ваш общий счет
                             </span>
+
+                            <div className="cursor" onClick={() => setActiveTab(7)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 3.33317L10 7.99984L6 12.6665" stroke="#10193A" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div>
-                            <Link className="online-accounting-card-btn" to="/auth/open-account">
-                                Открыть счет
-                                <ArrowRightIcon />
-                            </Link>
-                            {/* <div className="d-flex align-items-center">
-                                Номер счета:
-                                <span className="dashboard-card-02-subtitle mx-1"> XXXX XXXX XXXX</span>
-                                <Eye className="dashboard-eye" />
-                            </div>
-                            <div className="dashboard-card-02-balance">
-                                16.343.445,45
-                            </div> */}
+                            {reduxAccount?.bills?.length === 0 ?
+                                <Link className="online-accounting-card-btn" to="/auth/open-account">
+                                    Открыть счет
+                                    <ArrowRightIcon />
+                                </Link>
+                                :
+                                <>
+                                    <div className="d-flex align-items-center">
+                                        Номер счета:
+                                        <span className="dashboard-card-02-subtitle mx-1"> XXXX XXXX XXXX</span>
+                                        <Eye className="dashboard-eye" />
+                                    </div>
+                                    <div className="dashboard-card-02-balance">
+                                        {reduxAccount.total_bills}
+                                    </div>
+                                </>
+                            }
+
                         </div>
                     </div>
                 </div>

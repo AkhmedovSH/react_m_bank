@@ -28,28 +28,28 @@ function Index() {
 
 				<div className="row row-gap-10">
 					{activities.map((item, index) => (
-						<div key={index} className="col-md-6">
+						<Link key={index} className="col-md-6" to="/auth/activity/children">
 							<div className="activity-card">
 								{item}
 							</div>
-						</div>
+						</Link>
 					))
 					}
-					<div className="col-md-12">
+					<Link className="col-md-12" to="/auth/activity/children">
 						<div className="activity-card">
 							Другое
 						</div>
-					</div>
+					</Link>
 
 				</div>
 
-				<div className="auth-buttons">
+				{/* <div className="auth-buttons">
 					<Link className="auth-btn start" to="/auth/activity/children">
 						Продолжить
 						<div className="devider" />
 						<ArrowRightIcon />
 					</Link>
-				</div>
+				</div> */}
 			</div>
 
 			<div></div>

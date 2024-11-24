@@ -1,27 +1,29 @@
 import React from 'react'
-
+import { useTranslation } from 'react-i18next';
 import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
 
 function OnlineAccounting() {
+    const { t } = useTranslation();
+
     return (
         <>
             <div>
-                Для доступа к онлайн бухгалтерии приобретите подписку на наш сервис
+                {t('online_accounting_access_message')}
             </div>
 
             <div className="online-accounting-title">
-                Для ИП
+                {t('for_individual_entrepreneurs')}
             </div>
 
             <div className="row row-gap-10">
                 <div className="col-md-6">
                     <div className="online-accounting-card">
                         <div>
-                            До 1 млрд. сум
+                            {t('up_to_1_billion_sum')}
                         </div>
 
                         <button className="online-accounting-card-btn">
-                            50 000 сум в месяц
+                            {t('price_50000_sum_per_month')}
                             <ArrowRightIcon />
                         </button>
                     </div>
@@ -30,11 +32,11 @@ function OnlineAccounting() {
                 <div className="col-md-6">
                     <div className="online-accounting-card">
                         <div>
-                            Выше 1 млрд. сум
+                            {t('above_1_billion_sum')}
                         </div>
 
                         <button className="online-accounting-card-btn">
-                            100 000 сум в месяц
+                            {t('price_100000_sum_per_month')}
                             <ArrowRightIcon />
                         </button>
                     </div>
@@ -42,18 +44,18 @@ function OnlineAccounting() {
             </div>
 
             <div className="online-accounting-title">
-                Для Юр. лиц
+                {t('for_legal_entities')}
             </div>
 
             <div className="row row-gap-10">
                 <div className="col-md-6">
                     <div className="online-accounting-card">
                         <div>
-                            До 1 млрд. сум
+                            {t('up_to_1_billion_sum')}
                         </div>
 
                         <button className="online-accounting-card-btn">
-                            100 000 сум в месяц
+                            {t('price_100000_sum_per_month')}
                             <ArrowRightIcon />
                         </button>
                     </div>
@@ -62,11 +64,11 @@ function OnlineAccounting() {
                 <div className="col-md-6">
                     <div className="online-accounting-card">
                         <div>
-                            До 10 млрд. сум
+                            {t('up_to_10_billion_sum')}
                         </div>
 
                         <button className="online-accounting-card-btn">
-                            200 000 сум в месяц
+                            {t('price_200000_sum_per_month')}
                             <ArrowRightIcon />
                         </button>
                     </div>
@@ -75,11 +77,11 @@ function OnlineAccounting() {
                 <div className="col-md-6">
                     <div className="online-accounting-card">
                         <div>
-                            Выше 10 млрд. сум
+                            {t('above_10_billion_sum')}
                         </div>
 
                         <button className="online-accounting-card-btn">
-                            200 000 сум в месяц
+                            {t('price_200000_sum_per_month')}
                             <ArrowRightIcon />
                         </button>
                     </div>
