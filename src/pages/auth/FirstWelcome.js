@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 function FirstWelcome() {
     const navigate = useNavigate();
-    const [acitveTab, setAcitveTab] = useState(1);
+    const [acitveTab, setAcitveTab] = useState(3);
 
     function redirect() {
         localStorage.setItem('isFirst', false)
@@ -111,15 +111,10 @@ function FirstWelcome() {
                             с кешбеком
                         </div>
 
-                        <div className="d-flex gap-10">
-                            <button className="first-welcome-btn second" onClick={() => setAcitveTab(2)}>
-                                <ArrowLeftIcon />
-                            </button>
-                            <button className="first-welcome-btn" onClick={() => setAcitveTab(4)}>
-                                Далее
-                                <ArrowRightIcon />
-                            </button>
-                        </div>
+                        <button className="first-welcome-btn" onClick={() => setAcitveTab(4)}>
+                            Далее
+                            <ArrowRightIcon />
+                        </button>
                     </motion.div>
                 }
                 {acitveTab === 4 &&
