@@ -61,7 +61,7 @@ function Accounts() {
                         </div>
 
                         <div className="currency-card-price">
-                            16.343.445,45
+                            0.00
                         </div>
                     </div>
                 ))
