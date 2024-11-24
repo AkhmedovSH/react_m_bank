@@ -60,7 +60,7 @@ const Index = () => {
 		<AnimatePresence mode="wait">
 			<Routes location={location} key={location.pathname}>
 
-				<Route element={<NoAuthLayout />} path='/auth'>
+				<Route>
 					{createPublicRoutes()}
 				</Route>
 
@@ -73,7 +73,11 @@ const Index = () => {
 				</Route>
 
 				<Route element={<NoAuthLayout />}>
-					<Route path="*" element={<Navigate to="/auth/welcome" replace />} />
+					{localStorage.getItem('isFirst') ?
+						<Route path="*" element={<Navigate to="/auth/welcome" replace />} />
+						:
+						<Route path="*" element={<Navigate to="/first-welcome" replace />} />
+					}
 				</Route>
 			</Routes>
 		</AnimatePresence>
