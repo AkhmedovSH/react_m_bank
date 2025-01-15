@@ -9,9 +9,9 @@ export function formatPhone(str) {
 	return "";
 }
 
-export function formatDate(date) {
+export function formatDate(date, formatString = 'dd.MM.yyyy') {
 	if (date) {
-		var formattedDate = format(new Date(date), 'dd.MM.yyyy');
+		var formattedDate = format(new Date(date), formatString);
 		return formattedDate
 	}
 }

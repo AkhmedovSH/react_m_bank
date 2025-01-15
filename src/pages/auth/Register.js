@@ -1,29 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import MaskedInput from 'react-text-mask'
 
 import { useNavigate } from 'react-router-dom'
 
 import { httpOk, post } from 'configs/api'
-import { formatDateBackend } from 'configs/helper'
+import { formatDate, formatDateBackend } from 'configs/helper'
 
 import logo from 'assets/icons/logo.svg'
 import check from 'assets/icons/check.svg'
 import validation from 'assets/icons/validation.svg'
 import eye from 'assets/icons/eye.svg'
 import eye_closed from 'assets/icons/eye_closed.svg'
+import calendar from 'assets/icons/calendar.svg'
 
 import { ReactComponent as ArrowLeft } from 'assets/icons/arrow_left.svg';
 import { ReactComponent as ArrowRightIcon } from 'assets/icons/arrow_right.svg';
+import Calendar from 'pages/components/Calendar'
 
 function Register() {
 	const navigate = useNavigate()
 
+	const datePickerRef = useRef(null)
+
+	const [isCalendarOpen, setIsCalendarOpen] = useState(false)
 	const [errors, setErrors] = useState({});
 	const [data, setData] = useState({
 		first_name: '',
 		last_name: '',
 		middle_name: '',
-		birth_date: '',
+		birth_date: formatDate(new Date(), 'dd/MM/yyyy'),
 		email: '',
 		password: '',
 		agreement: false,
@@ -63,6 +68,25 @@ function Register() {
 			navigate(`/auth/phone?session_id=${response.data.session_id}`)
 		}
 	}
+
+	function selectDate(date, isCalendarOpen = false) {
+		setData({ ...data, birth_date: formatDate(date, 'dd/MM/yyyy') })
+		setIsCalendarOpen(isCalendarOpen)
+	}
+
+	useEffect(() => {
+		function handleClickOutside(event) {
+			if (datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+				setIsCalendarOpen(false)
+			}
+		}
+		// Bind the event listener
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			// Unbind the event listener on clean up
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [datePickerRef]);
 
 	return (
 		<>
@@ -109,18 +133,33 @@ function Register() {
 						</div>
 					</div>
 
-					<div className={`form-group ${errors.birth_date && 'error'}`}>
+					<div className={`form-group ${errors.birth_date && 'error'}`} ref={datePickerRef}>
 						<label htmlFor="birth_date">Дата рождения</label>
-						<MaskedInput
-							type="text"
-							className="auth-input"
-							id='birth_date'
-							placeholder='29/11/2006'
-							mask={[/[0-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
-							guide={true}
-							value={data.birth_date}
-							onChange={(e) => setData({ ...data, birth_date: e.target.value })}
-						/>
+						<div className="position-relative">
+							<MaskedInput
+								type="text"
+								className="auth-input"
+								id='birth_date'
+								placeholder='29/11/2006'
+								mask={[/[0-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+								guide={true}
+								value={data.birth_date}
+								onChange={(e) => setData({ ...data, birth_date: e.target.value })}
+							/>
+							<div className="right-icon" onClick={() => setIsCalendarOpen(!isCalendarOpen)}>
+								<img src={calendar} />
+							</div>
+
+							<div className={`date-picker ${isCalendarOpen ? 'active' : ''}`}>
+								<Calendar
+									onDateClick={selectDate}
+									currentDate={data.birth_date}
+									data={data}
+									setData={setData}
+								/>
+							</div>
+						</div>
+
 						<div className="message">
 							<img src={validation} alt="" width={24} />
 							{errors.birth_date}

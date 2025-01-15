@@ -16,7 +16,12 @@
 	}
 }
 
-@media (max-width: 992px) {}
+@media (max-width: 992px) {
+	.date-picker {
+		right: 0;
+		min-width: 200%;
+	}
+}
 
 @media (max-width: 768px) {
 	::-webkit-scrollbar {
